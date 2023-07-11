@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>PHP Page</title>
     <style>
     .navbar {
@@ -82,8 +83,10 @@
       background-image: linear-gradient(to top left, #003366, black);
     }
     .halltable{
-      padding:60px !important;
-      padding:60px !important;
+      padding-left:60px !important;
+      padding-right:60px !important;
+      padding-top:20px !important;
+      padding-bottom:10px !important;
     }
     
     .carousel-indicators > li {
@@ -98,6 +101,60 @@
     opacity: 1;
     background-color: rgba(0, 255, 0, 1) !important;
 }
+.bookbutton{
+  text-align: center;
+  margin: 30px;
+}
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  color: #fff;
+}
+
+.social-media {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.social-media li {
+  margin: 0 10px;
+}
+
+.social-media a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.social-media a:hover {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.footer hr {
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.footer p.text-center {
+  margin: 10;
+  font-size: 14px;
+
+}
+.follow{
+  text-align: center;
+}
   </style>
   <script>
     $(document).ready(function(){
@@ -107,6 +164,16 @@
       });
     });
   </script>
+  <script>
+  $(document).ready(function() {
+    $("#searchInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("table tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+</script>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -173,6 +240,19 @@
     </a>
   </div>
 </div>
+<div class="col-md-12 container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 justify-content-center">
+      <div class="input-group ">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search by any text">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fas fa-search"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
   
     <h1>
     <?php
@@ -226,7 +306,11 @@
                   echo $tdContent1;
                   echo $tdContent2;
               ?>
-
+              <br>
+              <div class="bookbutton">
+                  <a href="https://bigmovies.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+                
                 </td>
               </tr>
               <tr>
@@ -261,42 +345,42 @@
                   echo $tdContent1;
                   
               ?>
+              <br>
+              <div class="bookbutton">
+                  <a href="https://www.fcubecinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
 
                 </td>
               </tr>
               <tr>
                 <td class="imagtext">
-                <img src="images/fcube.jpg" alt="Image 4" height="200px">
+                <img src="images/cine.jpg" alt="Image 4" height="200px">
                 <br>
 
                 <?php
-                      echo $html->find('.MovieSchedule tr td', 29)->innertext;
+                      echo $html->find('.MovieSchedule tr td', 20)->innertext;
                 ?>
                 </td>
                 <td>
                 <?php
                      
-                      echo $html->find('.MovieSchedule tr td', 30)->innertext;
+                      echo $html->find('.MovieSchedule tr td', 21)->innertext;
                   ?>
                 </td>
                 <td><?php
-                     echo $html->find('.MovieSchedule tr td', 31)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 35)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 38)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 22)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 26)->innertext;
+                   
                  ?></td>
                 <td>
-                <?php
-                  $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
-                  
-                  
-                  // Remove "Ticket Rate" from the content
-                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
-                
-                  
-                  echo $tdContent1;
-                  
-              ?>
-
+                  <p>At Cine Theater: Ticket price ranges from Nrs. 180 - Nrs. 600
+                    <br>
+                  At Cine Dine: Range from Nrs. 400 - Nrs. 900
+                  </p>
+                  <br>
+              <div class="bookbutton">
+                  <a href="https://cdcnepal.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
                 </td>
               </tr>
               <tr>
@@ -315,15 +399,13 @@
                   ?>
                 </td>
                 <td><?php
-                     echo $html->find('.MovieSchedule tr td', 31)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 35)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 38)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 103)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 107)->innertext;
+                    
                  ?></td>
                 <td>
                 <?php
-                  $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
-                  
-                  
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 104)->innertext;
                   // Remove "Ticket Rate" from the content
                   $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
                 
@@ -331,6 +413,14 @@
                   echo $tdContent1;
                   
               ?>
+              <br>
+              <?php
+                  echo $html->find('.MovieSchedule tr td', 108)->innertext;  
+             ?>
+             <br>
+              <div class="bookbutton">
+                  <a href="https://www.qscinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
 
                 </td>
               </tr>
@@ -340,5 +430,36 @@
       </div>
     </div>
   </div>
+  <footer class="footer">
+  <div class="container-fluid">
+    <div class="col-md-12 row">
+      <div class="col-md-6">
+        <h4>About MovieHallHub</h4>
+        <p>MovieHallHub is a leading online platform for movie ticket bookings. We provide information about movie showtimes, cinema halls, ticket prices, and more. Book your movie tickets with ease and enjoy the latest movies in town.</p>
+      </div>
+      <div class="col-md-2">
+        <h4>Contact Us</h4>
+        <p>Email: khanalkaushal9@gmail.com</p>
+        <p>Phone: 9865558257</p>
+        <p>Address: Kathmandu, Nepal</p>
+      </div>
+      <div class="col-md-4 follow">
+        <h4>Follow Us</h4>
+        <ul class="social-media">
+          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+        <p class="text-center"> &copy; 2023 MovieHallHub. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
