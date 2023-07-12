@@ -179,6 +179,8 @@
       });
     });
   });
+  
+  
 </script>
 </head>
 <body>
@@ -466,6 +468,87 @@
     </div>
   </div>
 </footer>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script>
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
+    authDomain: "moviehallhub-5be63.firebaseapp.com",
+    databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+    projectId: "moviehallhub-5be63",
+    storageBucket: "moviehallhub-5be63.appspot.com",
+    messagingSenderId: "42968964428",
+    appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+    measurementId: "G-MGCRF3N36T"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    console.log(user)
+    var dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown');
+
+    var dropdownButton = document.createElement('button');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+    dropdownButton.setAttribute('type', 'button');
+    dropdownButton.setAttribute('id', 'dropdownMenuButton');
+    dropdownButton.setAttribute('data-toggle', 'dropdown');
+    dropdownButton.setAttribute('aria-haspopup', 'true');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+    dropdownButton.textContent = 'Dropdown';
+
+    var dropdownMenu = document.createElement('div');
+    dropdownMenu.classList.add('dropdown-menu');
+    dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
+
+    var profileLink = document.createElement('a');
+    profileLink.classList.add('dropdown-item');
+    profileLink.setAttribute('href', '#');
+    profileLink.textContent = 'Profile';
+
+    var logoutLink = document.createElement('a');
+    logoutLink.classList.add('dropdown-item', 'logout');
+    logoutLink.setAttribute('href', '#');
+    logoutLink.textContent = 'Logout';
+
+    dropdownMenu.appendChild(profileLink);
+    dropdownMenu.appendChild(logoutLink);
+
+    dropdown.appendChild(dropdownButton);
+    dropdown.appendChild(dropdownMenu);
+
+    document.querySelector('.navbar-nav.right').innerHTML = '';
+    document.querySelector('.navbar-nav.right').appendChild(dropdown);
+
+    document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
+      var confirmLogout = confirm("Are you sure you want to log out?");
+      if (confirmLogout) {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          console.log("Signed out");
+          document.querySelector('.navbar-nav.right').innerHTML = '';
+        }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+        });
+      }
+    });
+  } else {
+    // No user is signed in.
+    console.log("no user")
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
+  }
+});
+
+
+
+
+</script>
 
 </body>
 </html>

@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Registration Form 12</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <style>
-  
-.container {
+  body {
+    background-image: linear-gradient(to top left, #003366, black);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
+    color: white;
   }
-  
+
   h2 {
     text-align: center;
   }
-  
+
   .form-group {
     margin-bottom: 10px;
   }
-  
+
   label {
     display: block;
     margin-bottom: 5px;
   }
-  
+
   input[type="text"],
   input[type="email"],
   input[type="password"] {
@@ -32,7 +46,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
   button {
     display: block;
     margin-top: 10px;
@@ -43,37 +57,55 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  
+
   button:hover {
     background-color: #45a049;
   }
-  
+
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
 </style>
+
 <body>
   <div class="container">
-    <h2>Registration Form12</h2>
+    <h2>Registration Form</h2>
     <form id="registrationForm">
       <div class="form-group">
         <label for="username">Username:</label>
-        <input type="text" id="username" required>
+        <input type="text" id="username" class="form-control" required placeholder="Enter your username">
+        <div class="error-message" id="usernameError"></div>
       </div>
       <div class="form-group">
         <label for="location">Location:</label>
-        <input type="text" id="location" required>
+        <input type="text" id="location" class="form-control" required placeholder="Enter your location">
+        <div class="error-message" id="locationError"></div>
       </div>
       <div class="form-group">
         <label for="contact">Contact:</label>
-        <input type="text" id="contact" required>
+        <input type="text" id="contact" class="form-control" required placeholder="Enter your contact">
+        <div class="error-message" id="contactError"></div>
       </div>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email" class="form-control" required placeholder="Enter your email">
+        <div class="error-message" id="emailError"></div>
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" required>
+        <input type="password" id="password" class="form-control" required placeholder="Enter your password">
+        <div class="error-message" id="passwordError"></div>
       </div>
-      <button type="submit">Register</button>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" class="form-control" required placeholder="Confirm your password">
+        <div class="error-message" id="confirmPasswordError"></div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+        <button type="button" class="btn btn-secondary btn-block" id="loginButton">Login</button>
+      </div>
     </form>
   </div>
 
@@ -82,65 +114,104 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
   <script>
-    // Import the functions you need from the SDKs you need
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
   authDomain: "moviehallhub-5be63.firebaseapp.com",
+  databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
   projectId: "moviehallhub-5be63",
   storageBucket: "moviehallhub-5be63.appspot.com",
   messagingSenderId: "42968964428",
   appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
   measurementId: "G-MGCRF3N36T"
-};
+    };
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-  
-  // Reference to the registration form
-  var form = document.getElementById('registrationForm');
-  
-  // Submit event listener for the registration form
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevent form submission
-  
-    // Get user input values
-    var username = document.getElementById('username').value;
-    var location = document.getElementById('location').value;
-    var contact = document.getElementById('contact').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-  
-    // Create a new user with email and password
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then(function (userCredential) {
-        // Get the user object from the response
-        var user = userCredential.user;
-  
-        // Save additional user information to the Firebase database
-        firebase.database().ref('users/' + user.uid).set({
-          username: username,
-          location: location,
-          contact: contact,
-          email: email
-        }).then(function () {
-          // Redirect to login page after successful registration
-          window.location.href = 'login.html';
-        }).catch(function (error) {
-          // Handle database error
-          console.error('Error saving user information:', error);
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Reference to the registration form
+    var form = document.getElementById('registrationForm');
+
+    // Submit event listener for the registration form
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent form submission
+
+      // Reset error messages
+      document.getElementById('usernameError').innerHTML = "";
+      document.getElementById('locationError').innerHTML = "";
+      document.getElementById('contactError').innerHTML = "";
+      document.getElementById('emailError').innerHTML = "";
+      document.getElementById('passwordError').innerHTML = "";
+      document.getElementById('confirmPasswordError').innerHTML = "";
+
+      // Get user input values
+      var username = document.getElementById('username').value;
+      var location = document.getElementById('location').value;
+      var contact = document.getElementById('contact').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Check if email is valid
+      if (!isValidEmail(email)) {
+        document.getElementById('emailError').innerHTML = "Please enter a valid email address.";
+        return;
+      }
+
+      // Check if password and confirm password match
+      if (password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match.";
+        return;
+      }
+
+      // Create a new user with email and password
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(function (userCredential) {
+          // Get the user object from the response
+          var user = userCredential.user;
+
+          // Save additional user information to the Firebase database
+          firebase.database().ref('users/' + user.uid).set({
+            username: username,
+            location: location,
+            contact: contact,
+            email: email
+          }).then(function () {
+            // Redirect to login page after successful registration
+            window.location.href = 'login.html';
+          }).catch(function (error) {
+            // Handle database error
+            console.error('Error saving user information:', error);
+          });
+        })
+        .catch(function (error) {
+          // Handle authentication error
+          console.error('Error creating user:', error);
+
+          // Display error message
+          if (error.code === 'auth/weak-password') {
+            document.getElementById('passwordError').innerHTML = error.message;
+          } else if (error.code === 'auth/email-already-in-use') {
+            document.getElementById('emailError').innerHTML = error.message;
+          }
         });
-      })
-      .catch(function (error) {
-        // Handle authentication error
-        console.error('Error creating user:', error);
-      });
-  });
-  
+    });
+
+    // Function to check if the email is valid
+    function isValidEmail(email) {
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }
+    
+    // Login button click event listener
+    var loginButton = document.getElementById('loginButton');
+    loginButton.addEventListener('click', function () {
+      // Redirect to login page
+      window.location.href = 'login.html';
+    });
+
   </script>
 </body>
+
 </html>

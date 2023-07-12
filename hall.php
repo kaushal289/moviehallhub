@@ -140,7 +140,7 @@ table.table-dark tr {
       </ul>
       <ul class="navbar-nav right">
         <li class="nav-item">
-          <a class="nav-link" href="#">Signup</a>
+          <a class="nav-link" href="login.html">Signup</a>
         </li>
       </ul>
     </div>
