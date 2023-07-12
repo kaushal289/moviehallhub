@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit Profile</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<style>
+  body {
+    background-image: linear-gradient(to top left, #003366, black);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .error-message {
+    color: #ff0000;
+    margin-top: 5px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <h2>Edit Profile</h2>
+    <form id="editProfileForm">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" class="form-control" required placeholder="Enter your username">
+        <div class="error-message" id="usernameError"></div>
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" id="location" class="form-control" required placeholder="Enter your location">
+        <div class="error-message" id="locationError"></div>
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" class="form-control" required placeholder="Enter your contact">
+        <div class="error-message" id="contactError"></div>
+      </div>
+      <div class="form-group">
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" class="form-control" placeholder="Enter your new password">
+        <div class="error-message" id="newPasswordError"></div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your new password">
+        <div class="error-message" id="confirmPasswordError"></div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+        <button type="button" class="btn btn-secondary btn-block" id="cancelButton">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
+      authDomain: "moviehallhub-5be63.firebaseapp.com",
+      databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+      projectId: "moviehallhub-5be63",
+      storageBucket: "moviehallhub-5be63.appspot.com",
+      messagingSenderId: "42968964428",
+      appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+      measurementId: "G-MGCRF3N36T"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Reference to the user's profile in the Firebase database
+    var userRef;
+
+    // Listen for changes in the user's authentication state
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in
+        userRef = firebase.database().ref('users/' + user.uid);
+
+        // Listen for changes in the user's profile data
+        userRef.on('value', function(snapshot) {
+          var userData = snapshot.val();
+          if (userData) {
+            // Populate the form fields with the user's data
+            document.getElementById('username').value = userData.username || '';
+            document.getElementById('location').value = userData.location || '';
+            document.getElementById('contact').value = userData.contact || '';
+          }
+        });
+      } else {
+        // User is signed out
+        // Redirect to the login page or handle it as per your application's logic
+        window.location.href = 'login.html';
+      }
+    });
+
+    // Reference to the edit profile form
+    var form = document.getElementById('editProfileForm');
+
+    // Submit event listener for the edit profile form
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent form submission
+
+      // Reset error messages
+      document.getElementById('usernameError').innerHTML = "";
+      document.getElementById('locationError').innerHTML = "";
+      document.getElementById('contactError').innerHTML = "";
+      document.getElementById('newPasswordError').innerHTML = "";
+      document.getElementById('confirmPasswordError').innerHTML = "";
+
+      // Get user input values
+      var username = document.getElementById('username').value;
+      var location = document.getElementById('location').value;
+      var contact = document.getElementById('contact').value;
+      var newPassword = document.getElementById('newPassword').value;
+      var confirmPassword = document.getElementById('confirmPassword').value;
+
+      // Validation checks
+      if (newPassword !== confirmPassword) {
+        document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match.";
+        return;
+      }
+
+      // Update the user's profile data in the database
+      userRef.update({
+        username: username,
+        location: location,
+        contact: contact,
+      }).then(function() {
+        var user = firebase.auth().currentUser;
+        // Change the user's password if a new password is provided
+        if (newPassword) {
+          user.updatePassword(newPassword).then(function() {
+            alert('Profile and password updated successfully!');
+            // Redirect to profile page after successful update
+            window.location.href = 'profile.html';
+          }).catch(function(error) {
+            console.error('Error updating password:', error);
+            document.getElementById('newPasswordError').innerHTML = error.message;
+          });
+        } else {
+          alert('Profile updated successfully!');
+          // Redirect to profile page after successful update
+          window.location.href = 'profile.html';
+        }
+      }).catch(function(error) {
+        // Handle database error
+        console.error('Error updating user profile:', error);
+      });
+    });
+
+    // Cancel button click event listener
+    var cancelButton = document.getElementById('cancelButton');
+    cancelButton.addEventListener('click', function() {
+      // Redirect to profile page
+      window.location.href = 'profile.html';
+    });
+
+  </script>
+</body>
+
+</html>

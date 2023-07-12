@@ -49,7 +49,7 @@
         color: #ffffff !important;
     }
     .right{
-      text-align: -webkit-right;
+      text-align: -webkit-left;
     }
     .carousel-item img {
       width: 100%;
@@ -161,6 +161,35 @@
   color: green !important;
 
 }
+.dark-theme {
+  background-color: black;
+  color: #fff;
+}
+#dropdownMenuButton{
+  background-color: black !important;
+}
+
+.dropdown-menu {
+  background-color: black;
+ 
+}
+.dropdown {
+  right:0 !important;
+}
+
+.dropdown-item {
+  color: #fff;
+  
+}
+
+.dropdown-item:hover {
+  background-color: #555;
+}
+
+.dropdown-menu-left {
+  right: auto !important;
+  left: 0 !important;
+}
   </style>
   <script>
     $(document).ready(function(){
@@ -185,11 +214,15 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+  <div class="col-sm-4">
+
+
     <img src="images/logo.png" alt="Logo" height="50">
     <a class="navbar-brand" href="#">MOVIEHALLHUB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    </div>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav mx-auto middle">
         <li class="nav-item homeactive">
@@ -202,11 +235,14 @@
           <a class="nav-link" href="#">Help</a>
         </li>
       </ul>
-      <ul class="navbar-nav right">
+    
+      <div class="col-md-2">
+      <ul class="navbar-nav right justify-content-center">
         <li class="nav-item">
           <a class="nav-link" href="login.html">Signup</a>
         </li>
       </ul>
+    </div>
     </div>
   </nav>
   <div id="imageSlider" class="container-fluid carousel slide sliderimage" data-ride="carousel">
@@ -486,30 +522,48 @@
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+
+
+
+
   firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     // User is signed in.
-    console.log(user)
+   
     var dropdown = document.createElement('div');
-    dropdown.classList.add('dropdown');
+    dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
 
     var dropdownButton = document.createElement('button');
-    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle', 'w3-right');
     dropdownButton.setAttribute('type', 'button');
     dropdownButton.setAttribute('id', 'dropdownMenuButton');
     dropdownButton.setAttribute('data-toggle', 'dropdown');
     dropdownButton.setAttribute('aria-haspopup', 'true');
     dropdownButton.setAttribute('aria-expanded', 'false');
-    dropdownButton.textContent = 'Dropdown';
+
+    var profileIcon = document.createElement('i');
+    profileIcon.classList.add('fa', 'fa-user'); // Replace with the appropriate icon class, e.g., Font Awesome
+    dropdownButton.appendChild(profileIcon);
+
+    var usernameSpan = document.createElement('span');
+    usernameSpan.classList.add('username');
+    dropdownButton.appendChild(usernameSpan);
 
     var dropdownMenu = document.createElement('div');
-    dropdownMenu.classList.add('dropdown-menu');
+    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left'); // Added 'dropdown-menu-left' class
     dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
 
     var profileLink = document.createElement('a');
     profileLink.classList.add('dropdown-item');
-    profileLink.setAttribute('href', '#');
+    profileLink.setAttribute('href', 'profile.html'); // Link to the profile page
     profileLink.textContent = 'Profile';
+
+    // Retrieve and display the username from the Realtime Firebase database
+    firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
+      var username = snapshot.val().username;
+      usernameSpan.textContent = ' \t ' + username; // Add a space after the username
+    });
 
     var logoutLink = document.createElement('a');
     logoutLink.classList.add('dropdown-item', 'logout');
@@ -540,10 +594,11 @@
     });
   } else {
     // No user is signed in.
-    console.log("no user")
-    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
+    console.log("no user");
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
   }
 });
+
 
 
 
