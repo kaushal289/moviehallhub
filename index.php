@@ -12,7 +12,7 @@
     <style>
     .navbar {
       background-color: #000000;
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(255, 255, 0, 0.8);
     }
     .navbar-brand {
       color: #ffffff;
@@ -155,6 +155,12 @@
 .follow{
   text-align: center;
 }
+.navbar-nav .homeactive .nav-link {
+  border-color: green;
+  border-width: 3px;
+  color: green !important;
+
+}
   </style>
   <script>
     $(document).ready(function(){
@@ -184,11 +190,11 @@
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav mx-auto middle">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+        <li class="nav-item homeactive">
+          <a class="nav-link" href="index.php"><b>Home</b></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Hall</a>
+          <a class="nav-link" href="hall.php">Hall</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
@@ -196,7 +202,7 @@
       </ul>
       <ul class="navbar-nav right">
         <li class="nav-item">
-          <a class="nav-link" href="#">Signup</a>
+          <a class="nav-link" href="login.html">Signup</a>
         </li>
       </ul>
     </div>
