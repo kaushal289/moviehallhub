@@ -59,8 +59,19 @@
       
     }
     .carousel-item.active img {
-      transform: scale(1.12);
+      transform: scale(1.2);
+      animation-name: zoom-effect;
+      animation-duration: 6s;
+      animation-fill-mode: forwards;
 
+    }
+    @keyframes zoom-effect {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.2);
+      }
     }
     .carousel-inner{
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 30px 0 rgba(255, 255, 255, 1);
@@ -72,9 +83,10 @@
       
     }
     table.table-dark tr {
-      border: 10px solid rgba(0, 0, 0, 1);
+      border: 3px solid rgba(0, 0, 0, 0.5);
       padding: 100px !important;
       margin: 100px !important;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
     .imagtext{
       text-align: center;
@@ -192,9 +204,13 @@
 .dropdown-menu-left {
   right: 0 !important;
 }
-.time{
-  
-  color: white;
+.btn-dark:not(:disabled):not(.disabled).active, .btn-dark:not(:disabled):not(.disabled):active, .show>.btn-dark.dropdown-toggle {
+    color: #fff;
+    background-color: #000000;
+    border-color: #171a1d;
+    border-width: 5px;
+    border-color: #343a40;
+    font-size:x-large;
 }
   </style>
   <script>
@@ -214,6 +230,15 @@
       });
     });
   });
+  $(document).ready(function() {
+    $("#searchInput1").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("table tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+  
   
   
 </script>
@@ -290,23 +315,8 @@
     </a>
   </div>
 </div>
-<h2 class="times" style="text-align: center; color:white;">Today movies:</h2>
-<div id="current_date" class="time" style="text-align: center; color:white;"></p>
-<script>
-document.getElementById("current_date").innerHTML = Date();
-</script>
-<div class="col-md-12 container">
-  <div class="row justify-content-center">
-    <div class="col-md-6 justify-content-center">
-      <div class="input-group ">
-        <input type="text" id="searchInput" class="form-control" placeholder="Search by any text">
-        <div class="input-group-append">
-          <span class="input-group-text"><i class="fas fa-search"></i></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 
   
     <h1>
@@ -321,11 +331,31 @@ document.getElementById("current_date").innerHTML = Date();
       <div class="col-md-12">
         
         <div class="table-responsive">
-        <div class="pagination-buttons">
-            <button class="btn btn-primary active" id="todayBtn">Today</button>
-            <button class="btn btn-primary" id="tomorrowBtn">Tomorrow</button>
+        <div class="pagination-buttons" style="text-align: center;">
+            <button class="btn btn-dark active" id="todayBtn">Today</button>
+            <button class="btn btn-dark" id="tomorrowBtn">Tomorrow</button>
           </div>
           <table class="table table-dark table-bordered today ">
+          <div class="col-md-12 container">
+
+              <h2 class="times today" style="text-align: center; color:white;">Today movies:</h2>
+              <div id="current_date" class="today" style="text-align: center; color:white;"></div>
+              <script>
+                var currentDate = new Date();
+                var formattedDate = currentDate.toDateString();
+                document.getElementById("current_date").innerHTML = formattedDate;
+              </script>
+            <div class="row justify-content-center today">
+              <div class="col-md-6 justify-content-center">
+                <div class="input-group ">
+                  <input type="text" id="searchInput" class="form-control" placeholder="Search by any text">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <thead>
               <tr>
                 <th>Theater/Cinema Hall Name &amp; Location</th>
@@ -335,44 +365,7 @@ document.getElementById("current_date").innerHTML = Date();
               </tr>
             </thead>
             <tbody>
-              <tr>
-                
-                <td class="imagtext">
-                <img src="images/bigmovies.jpg" alt="Image 4" height="200px">
-                <br>
-
-                <?php
-                      echo $html->find('.MovieSchedule tr td', 6)->innertext;
-                ?>
-                </td>
-                <td>
-                <?php
-                     
-                      echo $html->find('.MovieSchedule tr td', 15)->innertext;
-                  ?>
-                </td>
-                <td><?php
-                     echo $html->find('.MovieSchedule tr td', 8)->innertext;
-                 ?></td>
-                <td>
-                <?php
-                  $tdContent1 = $html->find('.MovieSchedule tr td', 9)->innertext;
-                  $tdContent2 = $html->find('.MovieSchedule tr td', 13)->innertext;
-                  
-                  // Remove "Ticket Rate" from the content
-                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
-                  $tdContent2 = str_replace('Ticket Rate', '', $tdContent2);
-                  
-                  echo $tdContent1;
-                  echo $tdContent2;
-              ?>
-              <br>
-              <div class="bookbutton">
-                  <a href="https://bigmovies.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
-                </div>
-                
-                </td>
-              </tr>
+              
               <tr>
                 <td class="imagtext">
                 <img src="images/fcube.jpg" alt="Image 4" height="200px">
@@ -441,6 +434,44 @@ document.getElementById("current_date").innerHTML = Date();
               <div class="bookbutton">
                   <a href="https://cdcnepal.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
                 </div>
+                </td>
+              </tr>
+              <tr>
+                
+                <td class="imagtext">
+                <img src="images/bigmovies.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 6)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 15)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 8)->innertext;
+                 ?></td>
+                <td>
+                <?php
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 9)->innertext;
+                  $tdContent2 = $html->find('.MovieSchedule tr td', 13)->innertext;
+                  
+                  // Remove "Ticket Rate" from the content
+                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
+                  $tdContent2 = str_replace('Ticket Rate', '', $tdContent2);
+                  
+                  echo $tdContent1;
+                  echo $tdContent2;
+              ?>
+              <br>
+              <div class="bookbutton">
+                  <a href="https://bigmovies.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+                
                 </td>
               </tr>
               <tr>
@@ -487,6 +518,25 @@ document.getElementById("current_date").innerHTML = Date();
             </tbody>
           </table>
           <table class="table table-dark table-bordered tomorrow">
+          <h2 class="times tomorrow" style="text-align: center; color:white;">Tomorrow movies:</h2>
+          <div id="current_dates" class="tomorrow" style="text-align: center; color:white;"></div>
+          <script>
+            var currentDate = new Date();
+            currentDate.setDate(currentDate.getDate() + 1); // Add 1 day to the current date
+            var formattedDate = currentDate.toDateString();
+            document.getElementById("current_dates").innerHTML = formattedDate;
+          </script>
+          <div class="row justify-content-center tomorrow">
+              <div class="col-md-6 justify-content-center">
+                <div class="input-group ">
+                  <input type="text" id="searchInput1" class="form-control" placeholder="Search by any text">
+                  <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <thead>
               <tr>
                 <th>Theater/Cinema Hall Name &amp; Location</th>
@@ -496,6 +546,77 @@ document.getElementById("current_date").innerHTML = Date();
               </tr>
             </thead>
             <tbody>
+              
+              <tr>
+                <td class="imagtext">
+                <img src="images/fcube.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 29)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 30)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 186)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 190)->innertext;
+                     
+                 ?></td>
+                <td>
+                <?php
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
+                  
+                  
+                  // Remove "Ticket Rate" from the content
+                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
+                
+                  
+                  echo $tdContent1;
+                  
+              ?>
+              <br>
+              <div class="bookbutton">
+                  <a href="https://www.fcubecinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                <img src="images/cine.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 20)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 21)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 177)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 181)->innertext;
+                   
+                 ?></td>
+                <td>
+                  <p>At Cine Theater: Ticket price ranges from Nrs. 180 - Nrs. 600
+                    <br>
+                  At Cine Dine: Range from Nrs. 400 - Nrs. 900
+                  </p>
+                  <br>
+              <div class="bookbutton">
+                  <a href="https://cdcnepal.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+                </td>
+              </tr>
               <tr>
                 
                 <td class="imagtext">
@@ -536,76 +657,6 @@ document.getElementById("current_date").innerHTML = Date();
               </tr>
               <tr>
                 <td class="imagtext">
-                <img src="images/fcube.jpg" alt="Image 4" height="200px">
-                <br>
-
-                <?php
-                      echo $html->find('.MovieSchedule tr td', 29)->innertext;
-                ?>
-                </td>
-                <td>
-                <?php
-                     
-                      echo $html->find('.MovieSchedule tr td', 30)->innertext;
-                  ?>
-                </td>
-                <td><?php
-                     echo $html->find('.MovieSchedule tr td', 31)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 35)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 38)->innertext;
-                 ?></td>
-                <td>
-                <?php
-                  $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
-                  
-                  
-                  // Remove "Ticket Rate" from the content
-                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
-                
-                  
-                  echo $tdContent1;
-                  
-              ?>
-              <br>
-              <div class="bookbutton">
-                  <a href="https://www.fcubecinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
-                </div>
-
-                </td>
-              </tr>
-              <tr>
-                <td class="imagtext">
-                <img src="images/cine.jpg" alt="Image 4" height="200px">
-                <br>
-
-                <?php
-                      echo $html->find('.MovieSchedule tr td', 20)->innertext;
-                ?>
-                </td>
-                <td>
-                <?php
-                     
-                      echo $html->find('.MovieSchedule tr td', 21)->innertext;
-                  ?>
-                </td>
-                <td><?php
-                     echo $html->find('.MovieSchedule tr td', 22)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 26)->innertext;
-                   
-                 ?></td>
-                <td>
-                  <p>At Cine Theater: Ticket price ranges from Nrs. 180 - Nrs. 600
-                    <br>
-                  At Cine Dine: Range from Nrs. 400 - Nrs. 900
-                  </p>
-                  <br>
-              <div class="bookbutton">
-                  <a href="https://cdcnepal.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
-                </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="imagtext">
                 <img src="images/qcinemas.jpg" alt="Image 4" height="200px">
                 <br>
 
@@ -620,8 +671,8 @@ document.getElementById("current_date").innerHTML = Date();
                   ?>
                 </td>
                 <td><?php
-                     echo $html->find('.MovieSchedule tr td', 103)->innertext;
-                     echo $html->find('.MovieSchedule tr td', 107)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 258)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 262)->innertext;
                     
                  ?></td>
                 <td>
