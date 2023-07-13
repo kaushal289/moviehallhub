@@ -192,7 +192,7 @@
                   <br><b>Contact Number:</b> 01-4011643, 01-4011645, 01-211223
                   <br>
                   <h3>Reviews</h3>
-                  <div id="reviewStars" class="text-center">
+                  <div id="reviewStars1" class="text-center">
                     <i class="far fa-star fa-2x star" data-value="1"></i>
                     <i class="far fa-star fa-2x star" data-value="2"></i>
                     <i class="far fa-star fa-2x star" data-value="3"></i>
@@ -201,15 +201,148 @@
                   </div>
                 </td>
                 <td>
+                <h3> Total Reviews</h3>
+                  <div id="totalreviewStars1" class="text-center">
+                    <i class="far fa-star fa-2x stars" data-value="1"></i>
+                    <i class="far fa-star fa-2x stars" data-value="2"></i>
+                    <i class="far fa-star fa-2x stars" data-value="3"></i>
+                    <i class="far fa-star fa-2x stars" data-value="4"></i>
+                    <i class="far fa-star fa-2x stars" data-value="5"></i>
+                  </div>
                   <div class="bookbutton">
                     <a href="https://bigmovies.com.np/"
                       class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
                   </div>
                 </td>
               </tr>
+              <tr>
+                <td class="imagtext">
+                  <img src="images/fcube.jpg" alt="Image 4" height="200px">
+                  <br>
+                  <?php
+                      echo $html->find('.MovieSchedule tr td', 29)->innertext;
+                  ?>
+                </td>
+                <td>
+                  <h3>Information</h3>
+                  The fcube cinema hall is the newest cinema hall in kathmandu equipped with cutting edge 
+                  technologies like Dolby 3 Ware Digital sound systems and digital 2K projection view.
+                  Attractions of FCUBE Cinemas: Food Counter, Pay Parking, Relaxed Ambience.
+                  <br>
+                  <br><b>Location:</b> KL Tower, Chabahil, Kathmandu Nepal.
+                  <br><b>Contact Number:</b> 01-4468700 (For Booking as well)
+                  <br>
+                  <h3>Reviews</h3>
+                  <div id="reviewStars2" class="text-center">
+                    <i class="far fa-star fa-2x star" data-value="1"></i>
+                    <i class="far fa-star fa-2x star" data-value="2"></i>
+                    <i class="far fa-star fa-2x star" data-value="3"></i>
+                    <i class="far fa-star fa-2x star" data-value="4"></i>
+                    <i class="far fa-star fa-2x star" data-value="5"></i>
+                  </div>
+                </td>
+                <td>
+                <h3> Total Reviews</h3>
+                  <div id="totalreviewStars2" class="text-center">
+                    <i class="far fa-star fa-2x stars" data-value="1"></i>
+                    <i class="far fa-star fa-2x stars" data-value="2"></i>
+                    <i class="far fa-star fa-2x stars" data-value="3"></i>
+                    <i class="far fa-star fa-2x stars" data-value="4"></i>
+                    <i class="far fa-star fa-2x stars" data-value="5"></i>
+                  </div>
+                  <div class="bookbutton">
+                    <a href="https://www.fcubecinemas.com/"
+                      class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                  <img src="images/cine.jpg" alt="Image 4" height="200px">
+                  <br>
+                  <?php
+                      echo $html->find('.MovieSchedule tr td', 20)->innertext;
+                  ?>
+                </td>
+                <td>
+                  <h3>Information</h3>
+                  Cine Dine has the luxurious and comfortable leather sofas which are imported from China and Malaysia. 
+                  These sofas have the built in back massager,mini beverage Cooler and bell for calling the waiter. 
+                  In addition, you can order the items/food while watching movie with stand-by Cine Hostess at your 
+                  services.
+                  <br>
+                  <br><b>Location:</b> 7th and 8th Floor, Civil Trade Center, Sundhara
+                  <br><b>Contact Number:</b> 01-4248402 or 01-4248403
+                  <br>
+                  <h3>Reviews</h3>
+                  <div id="reviewStars3" class="text-center">
+                    <i class="far fa-star fa-2x star" data-value="1"></i>
+                    <i class="far fa-star fa-2x star" data-value="2"></i>
+                    <i class="far fa-star fa-2x star" data-value="3"></i>
+                    <i class="far fa-star fa-2x star" data-value="4"></i>
+                    <i class="far fa-star fa-2x star" data-value="5"></i>
+                  </div>
+                </td>
+                <td>
+                <h3> Total Reviews</h3>
+                  <div id="totalreviewStars3" class="text-center">
+                    <i class="far fa-star fa-2x stars" data-value="1"></i>
+                    <i class="far fa-star fa-2x stars" data-value="2"></i>
+                    <i class="far fa-star fa-2x stars" data-value="3"></i>
+                    <i class="far fa-star fa-2x stars" data-value="4"></i>
+                    <i class="far fa-star fa-2x stars" data-value="5"></i>
+                  </div>
+                  <div class="bookbutton">
+                    <a href="https://cdcnepal.com.np/"
+                      class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                  <img src="images/qcinemas.jpg" alt="Image 4" height="200px">
+                  <br>
+                  <?php
+                      echo $html->find('.MovieSchedule tr td', 101)->innertext;
+                  ?>
+                </td>
+                <td>
+                  <h3>Information</h3>
+                  For movie lovers, this would be a good news that a new multiplex cinema hall called Q's Cinemas is 
+                  under construction at the Rising Mall, Teendhara Marga opposite to Royal Singhi Hotel and next to 
+                  the Civil Bank. This hall is at the central location of Kathmandu near Durbar Marg and in proximity
+                   with the Jai Nepal Cinema hall.
+                  <br>
+                  <br><b>Location:</b> Teendhara Marg, Opposite Royal Singhi Hotel.
+                  <br><b>Contact Number:</b> 01-4169201, 01-4169202 (For Advanced Booking as well)
+                  <br>
+                  <h3>Reviews</h3>
+                  <div id="reviewStars4" class="text-center">
+                    <i class="far fa-star fa-2x star" data-value="1"></i>
+                    <i class="far fa-star fa-2x star" data-value="2"></i>
+                    <i class="far fa-star fa-2x star" data-value="3"></i>
+                    <i class="far fa-star fa-2x star" data-value="4"></i>
+                    <i class="far fa-star fa-2x star" data-value="5"></i>
+                  </div>
+                </td>
+                <td>
+                <h3> Total Reviews</h3>
+                  <div id="totalreviewStars4" class="text-center">
+                    <i class="far fa-star fa-2x stars" data-value="1"></i>
+                    <i class="far fa-star fa-2x stars" data-value="2"></i>
+                    <i class="far fa-star fa-2x stars" data-value="3"></i>
+                    <i class="far fa-star fa-2x stars" data-value="4"></i>
+                    <i class="far fa-star fa-2x stars" data-value="5"></i>
+                  </div>
+                  <div class="bookbutton">
+                    <a href="https://www.qscinemas.com/"
+                      class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
-          <button id="submitButton" class="btn btn-primary">Submit</button>
+          
         </div>
       </div>
     </div>
@@ -254,17 +387,29 @@
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
-    authDomain: "moviehallhub-5be63.firebaseapp.com",
-    databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
-    projectId: "moviehallhub-5be63",
-    storageBucket: "moviehallhub-5be63.appspot.com",
-    messagingSenderId: "42968964428",
-    appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
-    measurementId: "G-MGCRF3N36T"
+      authDomain: "moviehallhub-5be63.firebaseapp.com",
+      databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+      projectId: "moviehallhub-5be63",
+      storageBucket: "moviehallhub-5be63.appspot.com",
+      messagingSenderId: "42968964428",
+      appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+      measurementId: "G-MGCRF3N36T"
     };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+    function calculateTotalRating(rating) {
+      var totalRating = 0;
+      var count = 0;
+      for (var i = 1; i <= 5; i++) {
+        if (i <= rating) {
+          totalRating += i;
+          count++;
+        }
+      }
+      return count > 0 ? totalRating / count : 0;
+    }
 
     // Reference to the user's profile in the Firebase database
     var userRef;
@@ -278,34 +423,54 @@
         // Listen for changes in the user's profile data
         userRef.on('value', function (snapshot) {
           var userData = snapshot.val();
-          if (userData && userData.rating) {
+          if (userData) {
             // Retrieve the user's rating from the database
-            var rating = userData.rating;
-            highlightStars(rating);
+            var rating1 = userData.reviewStars1 || 0;
+            var rating2 = userData.reviewStars2 || 0;
+            var rating3 = userData.reviewStars3 || 0;
+            var rating4 = userData.reviewStars4 || 0;
+
+            highlightStars('reviewStars1', rating1);
+            highlightStars('reviewStars2', rating2);
+            highlightStars('reviewStars3', rating3);
+            highlightStars('reviewStars4', rating4);
+
+            var totalRating1 = calculateTotalRating(rating1);
+            var totalRating2 = calculateTotalRating(rating2);
+            var totalRating3 = calculateTotalRating(rating3);
+            var totalRating4 = calculateTotalRating(rating4);
+
+            highlightStarss('totalreviewStars1', totalRating1+3);
+            highlightStarss('totalreviewStars2', totalRating2+1);
+            highlightStarss('totalreviewStars3', totalRating3+2);
+            highlightStarss('totalreviewStars4', totalRating4+3);
+
+            // Update the total rating table with the calculated total ratings
+            document.getElementById('totalRating1').innerText = totalRating1.toFixed(2);
+            document.getElementById('totalRating2').innerText = totalRating2.toFixed(2);
+            document.getElementById('totalRating3').innerText = totalRating3.toFixed(2);
+            document.getElementById('totalRating4').innerText = totalRating4.toFixed(2);
           }
         });
-      } else {
-        // User is signed out
-        // Redirect to the login page or handle it as per your application's logic
-        window.location.href = 'login.html';
       }
     });
+    
 
+
+
+
+    
     // Star click event listener
     $('.star').on('click', function () {
       var rating = $(this).data('value');
-      highlightStars(rating);
+      var id = $(this).parent().attr('id');
+      highlightStars(id, rating);
+      saveRating(id, rating);
     });
+    
 
-    // Submit button click event listener
-    $('#submitButton').on('click', function () {
-      var rating = getSelectedRating();
-      saveRating(rating);
-    });
-
-    // Highlight stars up to the selected rating
-    function highlightStars(rating) {
-      $('.star').each(function () {
+    function highlightStars(id, rating) {
+      $('#' + id + ' .star').each(function () {
         var starValue = $(this).data('value');
         if (starValue <= rating) {
           $(this).removeClass('far').addClass('fas');
@@ -315,31 +480,39 @@
       });
     }
 
-    // Get the selected rating
-    function getSelectedRating() {
-      var rating = 0;
-      $('.star').each(function () {
-        if ($(this).hasClass('fas')) {
-          rating = $(this).data('value');
+    function highlightStarss(id, rating) {
+      $('#' + id + ' .stars').each(function () {
+        var starValue = $(this).data('value');
+        if (starValue <= rating) {
+          $(this).removeClass('far').addClass('fas');
+        } else {
+          $(this).removeClass('fas').addClass('far');
         }
       });
-      return rating;
     }
 
     // Save the rating in the database
-    function saveRating(rating) {
-      if (userRef) {
-        userRef.update({
-          rating: rating
-        }).then(function () {
-          console.log('Review rating saved successfully!');
-          alert('Review rating saved successfully!');
-        }).catch(function (error) {
-          console.error('Error saving review rating:', error);
-        });
-      }
+    function saveRating(id, rating) {
+      var userRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
+      userRef.update({
+        [id]: rating
+      }).then(function () {
+        console.log('Review rating saved successfully!');
+        alert('Review rating saved successfully!');
+      }).catch(function (error) {
+        console.error('Error saving review rating:', error);
+      });
     }
+
+
+
+
+
+
+
+    
   </script>
+
 </body>
 
 </html>

@@ -1,13 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <title>Contact Form 01</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link rel="stylesheet" href="help.css">
+  <style>
+    body {
+      background-image: linear-gradient(to top left, #003366, black);
+    }
+
+    .ftco-section {
+      padding: 0px !important;
+      
+    }
+    .all{
+        margin-top: 10%;
+    }
+
+    .bg-primary {
+      background: #000000 !important;
+      box-shadow: 0 30px 40px rgba(255, 255, 255, 0.3);
+    }
+
+    .contact-wrap {
+      background: #000;
+      box-shadow: 0 30px 40px rgba(255, 255, 255, 0.3);
+    }
+
+    .topic {
+      color: white !important;
+    }
+
+    .heading-section {
+      color: white !important;
+    }
+    .help{
+        padding-top: 25px;
+        margin-top: 100px;
+    }
+    .cont{
+        margin-bottom: 100px;
+    }
+
+
+
+
+
+
+
+    .navbar {
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+    }
+    .navbar-brand {
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .navbar-nav {
+      margin-left: auto;
+      
+    }
+    .middle{
+      text-align: center;
+    }
+    .navbar-nav .nav-link {
+      color: #ffffff !important;
+      margin: 0 10px;
+      border: 1px solid #ffffff;
+      width: 80px; /* Set a fixed width for the buttons */
+      border-radius: 30px;
+      display: inline-block;
+      text-align: center; /* Center align the text */
+      line-height: 1.5; /* Adjust line-height as needed */
+      transition: background-color 0.3s;
+      font-size:large; /* Add a smooth transition effect */
+    }
+    .navbar-nav{
+      color: black !important; /* Set the background color to green on hover */
+    }
+    .nav-link:hover {
+      color: black !important;
+      background-color: white; /* Set the background color to green on hover */
+    }
+    .navbar-toggler-icon{
+        color: #ffffff !important;
+    }
+    .right{
+      text-align: -webkit-left;
+    }
+    .navbar-nav .helpactive .nav-link {
+        border-color: green;
+        border-width: 3px;
+        color: green !important;
+
+        }
+
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow:20px 20px 50px 50px rgb(0, 0, 0);
+  color: #fff;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 200px;
+}
+
+.footer h4 {
+  color: #fff;
+}
+
+.footer p {
+  color: #fff;
+}
+
+.social-media {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.social-media li {
+  margin: 0 10px;
+}
+
+.social-media a {
+  color: #fff;
+  font-size: 20px;
+}
+
+.social-media a:hover {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.footer hr {
+  background-color: #fff;
+  margin: 20px 0;
+}
+
+.footer p.text-center {
+  margin: 10;
+  font-size: 14px;
+
+}
+.follow{
+  text-align: center;
+}
+.navbar-nav .homeactive .nav-link {
+  border-color: green;
+  border-width: 3px;
+  color: green !important;
+
+}
+.dark-theme {
+  color: rgba(0, 0, 0, 0.5);
+  right: 0 !important;
+}
+#dropdownMenuButton{
+  background-color: black !important;
+}
+
+.dropdown-menu {
+  background-color: black;
+ 
+}
+.dropdown {
+  right:0 !important;
+  text-align: center;
+}
+
+.dropdown-item {
+  color: #fff;
+  right: 0px !important;
+  
+}
+
+.dropdown-item:hover {
+  background-color: #555;
+}
+
+.dropdown-menu-left {
+  right: 0 !important;
+}
+.dropdown-toggle{
+    margin: 0px !important
+}
+
+
+  </style>
+
 </head>
+
 <body>
-    <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+
+
+        <img src="images/logo.png" alt="Logo" height="50">
+        <a class="navbar-brand" href="#">MOVIEHALLHUB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav mx-auto middle">
+            <li class="nav-item ">
+              <a class="nav-link" href="index.php"><b>Home</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hall.php">Hall</a>
+            </li>
+            <li class="nav-item helpactive">
+              <a class="nav-link" href="help.html">Help</a>
+            </li>
+          </ul>
         
+          <div class="col-md-2">
+          <ul class="navbar-nav right justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Signup</a>
+            </li>
+          </ul>
+        </div>
+      
+      </nav>
+
+  <section class="ftco-section">
+    <div class="container all">
+      <div class="row justify-content-center help">
+        <div class="col-md-6 text-center mb-5">
+          <h2 class="heading-section">Help Section</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center cont">
+        <div class="col-lg-10 col-md-12">
+          <div class="wrapper">
+            <div class="row no-gutters">
+              <div class="col-md-7 d-flex align-items-stretch">
+                <div class="contact-wrap w-100 p-md-5 p-4">
+                  <h3 class="mb-4 topic">Get in touch</h3>
+                  <div id="form-message-warning" class="mb-4"></div>
+                  <div id="form-message-success" class="mb-4">
+                    Your message was sent, thank you!
+                  </div>
+                  <form method="POST" id="contactForm" name="contactForm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Email" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <textarea name="message" class="form-control" id="message" cols="30" rows="7" placeholder="Message"></textarea>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <input type="submit" value="Send Message" class="btn btn-primary">
+                          <div class="submitting"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-md-5 d-flex align-items-stretch">
+                <div class="info-wrap bg-primary w-100 p-lg-5 p-4">
+                  <h3 class="mb-4 mt-md-4">Contact us</h3>
+                  <div class="dbox w-100 d-flex align-items-start">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <span class="fa fa-map-marker"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Address:</span> Kathmandu Nepal</p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <span class="fa fa-phone"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Phone:</span> <a href="tel://1234567920">+977 9865558257</a></p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <span class="fa fa-paper-plane"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Email:</span> <a href="mailto:info@yoursite.com">khanalkhanal9@gmail.com</a></p>
+                    </div>
+                  </div>
+                  <div class="dbox w-100 d-flex align-items-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <span class="fa fa-globe"></span>
+                    </div>
+                    <div class="text pl-3">
+                      <p><span>Website</span> <a href="#">www.moviehallhub.com</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="col-md-12 row">
+        <div class="col-md-6">
+          <h4>About MovieHallHub</h4>
+          <p>MovieHallHub is a leading online platform for movie ticket bookings. We provide information about movie showtimes, cinema halls, ticket prices, and more. Book your movie tickets with ease and enjoy the latest movies in town.</p>
+        </div>
+        <div class="col-md-2">
+          <h4>Contact Us</h4>
+          <p>Email: khanalkaushal9@gmail.com</p>
+          <p>Phone: 9865558257</p>
+          <p>Address: Kathmandu, Nepal</p>
+        </div>
+        <div class="col-md-4 follow">
+          <h4>Follow Us</h4>
+          <ul class="social-media">
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <hr>
+          <p class="text-center"> &copy; 2023 MovieHallHub. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
+    authDomain: "moviehallhub-5be63.firebaseapp.com",
+    databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+    projectId: "moviehallhub-5be63",
+    storageBucket: "moviehallhub-5be63.appspot.com",
+    messagingSenderId: "42968964428",
+    appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+    measurementId: "G-MGCRF3N36T"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    document.getElementById("email").value=user.email
+   
+    var dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
+
+    var dropdownButton = document.createElement('button');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+    dropdownButton.setAttribute('type', 'button');
+    dropdownButton.setAttribute('id', 'dropdownMenuButton');
+    dropdownButton.setAttribute('data-toggle', 'dropdown');
+    dropdownButton.setAttribute('aria-haspopup', 'true');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+
+    var profileIcon = document.createElement('i');
+    profileIcon.classList.add('fa', 'fa-user'); // Replace with the appropriate icon class, e.g., Font Awesome
+    dropdownButton.appendChild(profileIcon);
+
+    var usernameSpan = document.createElement('span');
+    usernameSpan.classList.add('username');
+    dropdownButton.appendChild(usernameSpan);
+
+    var dropdownMenu = document.createElement('div');
+    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left'); // Added 'dropdown-menu-left' class
+    dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
+
+    var profileLink = document.createElement('a');
+    profileLink.classList.add('dropdown-item');
+    profileLink.setAttribute('href', 'profile.html'); // Link to the profile page
+    profileLink.textContent = 'Profile';
+
+    // Retrieve and display the username from the Realtime Firebase database
+    firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
+      var username = snapshot.val().username;
+      usernameSpan.textContent = ' \t ' + username; // Add a space after the username
+    });
+
+    var logoutLink = document.createElement('a');
+    logoutLink.classList.add('dropdown-item', 'logout');
+    logoutLink.setAttribute('href', '#');
+    logoutLink.textContent = 'Logout';
+
+    dropdownMenu.appendChild(profileLink);
+    dropdownMenu.appendChild(logoutLink);
+
+    dropdown.appendChild(dropdownButton);
+    dropdown.appendChild(dropdownMenu);
+
+    document.querySelector('.navbar-nav.right').innerHTML = '';
+    document.querySelector('.navbar-nav.right').appendChild(dropdown);
+
+    document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
+      var confirmLogout = confirm("Are you sure you want to log out?");
+      if (confirmLogout) {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          console.log("Signed out");
+          document.querySelector('.navbar-nav.right').innerHTML = '';
+        }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+        });
+      }
+    });
+  } else {
+    // No user is signed in.
+    console.log("no user");
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
+  }
+});
+
+
+
+
+
+</script>
+
+
 </body>
+
 </html>

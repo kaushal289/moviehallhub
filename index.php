@@ -11,8 +11,8 @@
     <title>PHP Page</title>
     <style>
     .navbar {
-      background-color: #000000;
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(255, 255, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
     }
     .navbar-brand {
       color: #ffffff;
@@ -55,15 +55,15 @@
       width: 100%;
       height: 80vh;
       background-size: cover;
-      transition: transform 7s;
+      transition: transform 6s;
       
     }
     .carousel-item.active img {
-      transform: scale(1.12); 
+      transform: scale(1.12);
 
     }
     .carousel-inner{
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 30px 0 rgba(0, 0, 0, 1);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 30px 0 rgba(255, 255, 255, 1);
     }
     .sliderimage{
       margin-top: 50px;
@@ -106,11 +106,12 @@
   margin: 30px;
 }
 .footer {
-  background-color: #000;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow:20px 20px 50px 50px rgb(0, 0, 0);
   color: #fff;
   padding-left: 50px;
   padding-right: 50px;
-  padding-top: 50px;
+  margin-top: 100px;
 }
 
 .footer h4 {
@@ -162,8 +163,8 @@
 
 }
 .dark-theme {
-  background-color: black;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.5);
+  right: 0 !important;
 }
 #dropdownMenuButton{
   background-color: black !important;
@@ -175,10 +176,12 @@
 }
 .dropdown {
   right:0 !important;
+  text-align: center;
 }
 
 .dropdown-item {
   color: #fff;
+  right: 0px !important;
   
 }
 
@@ -187,15 +190,18 @@
 }
 
 .dropdown-menu-left {
-  right: auto !important;
-  left: 0 !important;
+  right: 0 !important;
+}
+.time{
+  
+  color: white;
 }
   </style>
   <script>
     $(document).ready(function(){
       $('.carousel').carousel({
         interval: 7000,
-        // Slide interval in milliseconds (5 seconds)
+        
       });
     });
   </script>
@@ -214,7 +220,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-  <div class="col-sm-4">
+
 
 
     <img src="images/logo.png" alt="Logo" height="50">
@@ -232,7 +238,7 @@
           <a class="nav-link" href="hall.php">Hall</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
+          <a class="nav-link" href="help.html">Help</a>
         </li>
       </ul>
     
@@ -243,7 +249,7 @@
         </li>
       </ul>
     </div>
-    </div>
+  
   </nav>
   <div id="imageSlider" class="container-fluid carousel slide sliderimage" data-ride="carousel">
 
@@ -284,6 +290,11 @@
     </a>
   </div>
 </div>
+<h2 class="times" style="text-align: center; color:white;">Today movies:</h2>
+<div id="current_date" class="time" style="text-align: center; color:white;"></p>
+<script>
+document.getElementById("current_date").innerHTML = Date();
+</script>
 <div class="col-md-12 container">
   <div class="row justify-content-center">
     <div class="col-md-6 justify-content-center">
@@ -299,6 +310,7 @@
 
   
     <h1>
+    
     <?php
         include('simple_html_dom.php');
         $html = str_get_html(file_get_contents("https://www.showtimenepal.com/p/now-showing.html"));
@@ -309,7 +321,172 @@
       <div class="col-md-12">
         
         <div class="table-responsive">
-          <table class="table table-dark table-bordered">
+        <div class="pagination-buttons">
+            <button class="btn btn-primary active" id="todayBtn">Today</button>
+            <button class="btn btn-primary" id="tomorrowBtn">Tomorrow</button>
+          </div>
+          <table class="table table-dark table-bordered today ">
+            <thead>
+              <tr>
+                <th>Theater/Cinema Hall Name &amp; Location</th>
+                <th>Contact Number</th>
+                <th>Movie/Show Time</th>
+                <th>Ticket Price/Special Offer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td class="imagtext">
+                <img src="images/bigmovies.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 6)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 15)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 8)->innertext;
+                 ?></td>
+                <td>
+                <?php
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 9)->innertext;
+                  $tdContent2 = $html->find('.MovieSchedule tr td', 13)->innertext;
+                  
+                  // Remove "Ticket Rate" from the content
+                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
+                  $tdContent2 = str_replace('Ticket Rate', '', $tdContent2);
+                  
+                  echo $tdContent1;
+                  echo $tdContent2;
+              ?>
+              <br>
+              <div class="bookbutton">
+                  <a href="https://bigmovies.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+                
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                <img src="images/fcube.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 29)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 30)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 31)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 35)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 38)->innertext;
+                 ?></td>
+                <td>
+                <?php
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
+                  
+                  
+                  // Remove "Ticket Rate" from the content
+                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
+                
+                  
+                  echo $tdContent1;
+                  
+              ?>
+              <br>
+              <div class="bookbutton">
+                  <a href="https://www.fcubecinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                <img src="images/cine.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 20)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 21)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 22)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 26)->innertext;
+                   
+                 ?></td>
+                <td>
+                  <p>At Cine Theater: Ticket price ranges from Nrs. 180 - Nrs. 600
+                    <br>
+                  At Cine Dine: Range from Nrs. 400 - Nrs. 900
+                  </p>
+                  <br>
+              <div class="bookbutton">
+                  <a href="https://cdcnepal.com.np/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="imagtext">
+                <img src="images/qcinemas.jpg" alt="Image 4" height="200px">
+                <br>
+
+                <?php
+                      echo $html->find('.MovieSchedule tr td', 101)->innertext;
+                ?>
+                </td>
+                <td>
+                <?php
+                     
+                      echo $html->find('.MovieSchedule tr td', 102)->innertext;
+                  ?>
+                </td>
+                <td><?php
+                     echo $html->find('.MovieSchedule tr td', 103)->innertext;
+                     echo $html->find('.MovieSchedule tr td', 107)->innertext;
+                    
+                 ?></td>
+                <td>
+                <?php
+                  $tdContent1 = $html->find('.MovieSchedule tr td', 104)->innertext;
+                  // Remove "Ticket Rate" from the content
+                  $tdContent1 = str_replace('Ticket Rate', '', $tdContent1);
+                
+                  
+                  echo $tdContent1;
+                  
+              ?>
+              <br>
+              <?php
+                  echo $html->find('.MovieSchedule tr td', 108)->innertext;  
+             ?>
+             <br>
+              <div class="bookbutton">
+                  <a href="https://www.qscinemas.com/" class="btn btn-outline-success justify-content-center"><b>Buy Tickets</b></a>
+                </div>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table table-dark table-bordered tomorrow">
             <thead>
               <tr>
                 <th>Theater/Cinema Hall Name &amp; Location</th>
@@ -535,7 +712,7 @@
     dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
 
     var dropdownButton = document.createElement('button');
-    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle', 'w3-right');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
     dropdownButton.setAttribute('type', 'button');
     dropdownButton.setAttribute('id', 'dropdownMenuButton');
     dropdownButton.setAttribute('data-toggle', 'dropdown');
@@ -599,10 +776,35 @@
   }
 });
 
+  $(document).ready(function() {
+    // Initially show the today table and hide the tomorrow table
+    $('.today').show();
+    $('.tomorrow').hide();
 
+    // Handle click event for the "Today" button
+    $('#todayBtn').click(function() {
+      $('.today').show();
+      $('.tomorrow').hide();
+      $('#todayBtn').addClass('active');
+      $('#tomorrowBtn').removeClass('active');
+    });
 
+    // Handle click event for the "Tomorrow" button
+    $('#tomorrowBtn').click(function() {
+      $('.today').hide();
+      $('.tomorrow').show();
+      $('#todayBtn').removeClass('active');
+      $('#tomorrowBtn').addClass('active');
+    });
 
+    // Check the initial state and hide the "Tomorrow" table if "Today" button is active
+    if ($('#todayBtn').hasClass('active')) {
+      $('.tomorrow').hide();
+    }
+  });
+</script>
 
+    
 </script>
 
 </body>
