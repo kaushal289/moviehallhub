@@ -59,7 +59,12 @@
 
 
 
+    .navbar-nav .helpactive .nav-link {
+        border-color: green;
+        border-width: 3px;
+        color: green !important;
 
+        }
     .navbar {
       background-color: rgba(0, 0, 0, 0.9);
       box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
@@ -218,7 +223,7 @@
         </div>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul class="navbar-nav mx-auto middle">
-            <li class="nav-item ">
+            <li class="nav-item">
               <a class="nav-link" href="index.php"><b>Home</b></a>
             </li>
             <li class="nav-item">
@@ -456,10 +461,69 @@
   } else {
     // No user is signed in.
     console.log("no user");
-    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
   }
 });
 
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting
+
+  var user = firebase.auth().currentUser;
+  if (!user) {
+    alert('Please login to submit the form');
+    return;
+  }
+
+  // Get the form values
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var subject = document.getElementById('subject').value;
+  var message = document.getElementById('message').value;
+
+  // Perform form validation
+  if (name.trim() === '') {
+    alert('Please enter your name');
+    return;
+  }
+
+  if (subject.trim() === '') {
+    alert('Please enter the subject');
+    return;
+  }
+
+  if (message.trim() === '') {
+    alert('Please enter your message');
+    return;
+  }
+
+  // Store the form data in the Firebase Database
+  var formData = {
+    name: name,
+    email: email,
+    subject: subject,
+    message: message
+  };
+
+  // Push the form data to the Firebase Database
+  firebase.database().ref('contact-messages').push(formData)
+    .then(function() {
+      // Display success message
+      document.getElementById('form-message-warning').style.display = 'none';
+      document.getElementById('form-message-success').style.display = 'block';
+
+      // Reset the form fields
+      document.getElementById('name').value = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+    })
+    .catch(function(error) {
+      // Display error message
+      document.getElementById('form-message-success').style.display = 'none';
+      document.getElementById('form-message-warning').style.display = 'block';
+      document.getElementById('form-message-warning').textContent = 'Failed to submit the form. Please try again later.';
+      console.error(error);
+    });
+});
 
 
 

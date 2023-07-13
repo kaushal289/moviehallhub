@@ -212,6 +212,9 @@
     border-color: #343a40;
     font-size:x-large;
 }
+.sh{
+  margin: 15px;
+}
   </style>
   <script>
     $(document).ready(function(){
@@ -346,7 +349,7 @@
                 document.getElementById("current_date").innerHTML = formattedDate;
               </script>
             <div class="row justify-content-center today">
-              <div class="col-md-6 justify-content-center">
+              <div class="col-md-6 justify-content-center sh">
                 <div class="input-group ">
                   <input type="text" id="searchInput" class="form-control" placeholder="Search by any text">
                   <div class="input-group-append">
@@ -360,7 +363,7 @@
               <tr>
                 <th>Theater/Cinema Hall Name &amp; Location</th>
                 <th>Contact Number</th>
-                <th>Movie/Show Time</th>
+                <th colspan="2">Movie/Show Time</th>
                 <th>Ticket Price/Special Offer</th>
               </tr>
             </thead>
@@ -383,9 +386,15 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 31)->innertext;
+                     
+                 ?></td>
+                 <td>
+                 <?php
+                    
                      echo $html->find('.MovieSchedule tr td', 35)->innertext;
                      echo $html->find('.MovieSchedule tr td', 38)->innertext;
-                 ?></td>
+                 ?>
+                 </td>
                 <td>
                 <?php
                   $tdContent1 = $html->find('.MovieSchedule tr td', 32)->innertext;
@@ -422,6 +431,11 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 22)->innertext;
+                     
+                   
+                 ?></td>
+                 <td><?php
+                    
                      echo $html->find('.MovieSchedule tr td', 26)->innertext;
                    
                  ?></td>
@@ -456,6 +470,8 @@
                      echo $html->find('.MovieSchedule tr td', 8)->innertext;
                  ?></td>
                 <td>
+                </td>
+                <tD>
                 <?php
                   $tdContent1 = $html->find('.MovieSchedule tr td', 9)->innertext;
                   $tdContent2 = $html->find('.MovieSchedule tr td', 13)->innertext;
@@ -491,6 +507,11 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 103)->innertext;
+                    
+                    
+                 ?></td>
+                 <td><?php
+                    
                      echo $html->find('.MovieSchedule tr td', 107)->innertext;
                     
                  ?></td>
@@ -527,7 +548,7 @@
             document.getElementById("current_dates").innerHTML = formattedDate;
           </script>
           <div class="row justify-content-center tomorrow">
-              <div class="col-md-6 justify-content-center">
+              <div class="col-md-6 justify-content-center sh">
                 <div class="input-group ">
                   <input type="text" id="searchInput1" class="form-control" placeholder="Search by any text">
                   <div class="input-group-append">
@@ -541,7 +562,7 @@
               <tr>
                 <th>Theater/Cinema Hall Name &amp; Location</th>
                 <th>Contact Number</th>
-                <th>Movie/Show Time</th>
+                <th colspan="2">Movie/Show Time</th>
                 <th>Ticket Price/Special Offer</th>
               </tr>
             </thead>
@@ -564,6 +585,11 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 186)->innertext;
+                   
+                     
+                 ?></td>
+                 <td><?php
+                    
                      echo $html->find('.MovieSchedule tr td', 190)->innertext;
                      
                  ?></td>
@@ -603,6 +629,11 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 177)->innertext;
+                    
+                   
+                 ?></td>
+                 <td><?php
+          
                      echo $html->find('.MovieSchedule tr td', 181)->innertext;
                    
                  ?></td>
@@ -636,6 +667,8 @@
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 8)->innertext;
                  ?></td>
+                <td>
+                </td>
                 <td>
                 <?php
                   $tdContent1 = $html->find('.MovieSchedule tr td', 9)->innertext;
@@ -672,6 +705,11 @@
                 </td>
                 <td><?php
                      echo $html->find('.MovieSchedule tr td', 258)->innertext;
+                     
+                    
+                 ?></td>
+                 <td><?php
+              
                      echo $html->find('.MovieSchedule tr td', 262)->innertext;
                     
                  ?></td>
@@ -823,7 +861,7 @@
   } else {
     // No user is signed in.
     console.log("no user");
-    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>';
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
   }
 });
 

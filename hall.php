@@ -11,115 +11,151 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <title>PHP Page</title>
   <style>
+    
     .navbar {
-      background-color: #000000;
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(255, 255, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
     }
-
     .navbar-brand {
       color: #ffffff;
       font-size: 1.5rem;
       font-weight: bold;
     }
-
     .navbar-nav {
       margin-left: auto;
-
+      
     }
-
-    .middle {
+    .middle{
       text-align: center;
     }
-
     .navbar-nav .nav-link {
       color: #ffffff !important;
       margin: 0 10px;
       border: 1px solid #ffffff;
-      width: 80px;
+      width: 80px; /* Set a fixed width for the buttons */
       border-radius: 30px;
       display: inline-block;
-      text-align: center;
-      line-height: 1.5;
+      text-align: center; /* Center align the text */
+      line-height: 1.5; /* Adjust line-height as needed */
       transition: background-color 0.3s;
-      font-size: large;
+      font-size:large; /* Add a smooth transition effect */
     }
-
-    .navbar-nav {
-      color: black !important;
+    .navbar-nav{
+      color: black !important; /* Set the background color to green on hover */
     }
-
     .nav-link:hover {
       color: black !important;
-      background-color: white;
+      background-color: white; /* Set the background color to green on hover */
     }
-
-    .navbar-toggler-icon {
-      color: #ffffff !important;
+    .navbar-toggler-icon{
+        color: #ffffff !important;
     }
-
-    .right {
-      text-align: -webkit-right;
+    .right{
+      text-align: -webkit-left;
     }
+    .navbar-nav .helpactive .nav-link {
+        border-color: green;
+        border-width: 3px;
+        color: green !important;
 
-    .footer {
-      background-color: #000;
-      color: #fff;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-    }
+        }
 
-    .footer h4 {
-      color: #fff;
-    }
 
-    .footer p {
-      color: #fff;
-    }
+        .footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow:20px 20px 50px 50px rgb(0, 0, 0);
+  color: #fff;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 70px;
+}
 
-    .social-media {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-    }
+.footer h4 {
+  color: #fff;
+}
 
-    .social-media li {
-      margin: 0 10px;
-    }
+.footer p {
+  color: #fff;
+}
 
-    .social-media a {
-      color: #fff;
-      font-size: 20px;
-    }
+.social-media {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
 
-    .social-media a:hover {
-      color: #aaa;
-      transition: color 0.3s ease;
-    }
+.social-media li {
+  margin: 0 10px;
+}
 
-    .footer hr {
-      background-color: #fff;
-      margin: 20px 0;
-    }
+.social-media a {
+  color: #fff;
+  font-size: 20px;
+}
 
-    .footer p.text-center {
-      margin: 10;
-      font-size: 14px;
-    }
+.social-media a:hover {
+  color: #aaa;
+  transition: color 0.3s ease;
+}
 
-    .follow {
-      text-align: center;
-    }
+.footer hr {
+  background-color: #fff;
+  margin: 20px 0;
+}
 
-    .navbar-nav .hallactive .nav-link {
-      border-color: green;
-      border-width: 3px;
-      color: green !important;
-    }
+.footer p.text-center {
+  margin: 10;
+  font-size: 14px;
 
-    table.table-dark tr {
-      border: 10px solid rgba(0, 0, 0, 1);
+}
+.follow{
+  text-align: center;
+}
+.navbar-nav .homeactive .nav-link {
+  border-color: green;
+  border-width: 3px;
+  color: green !important;
+
+}
+.dark-theme {
+  color: rgba(0, 0, 0, 0.5);
+  right: 0 !important;
+}
+#dropdownMenuButton{
+  background-color: black !important;
+}
+
+.dropdown-menu {
+  background-color: black;
+ 
+}
+.dropdown {
+  right:0 !important;
+  text-align: center;
+}
+
+.dropdown-item {
+  color: #fff;
+  right: 0px !important;
+  
+}
+
+.dropdown-item:hover {
+  background-color: #555;
+}
+
+.dropdown-menu-left {
+  right: 0 !important;
+}
+.dropdown-toggle{
+    margin: 0px !important
+}
+table.table-dark tr {
+      border: 3px solid rgba(0, 0, 0, 0.5);
+      padding: 100px !important;
+      margin: 100px !important;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
 
     .halltable {
@@ -128,36 +164,65 @@
       padding-top: 100px !important;
       padding-bottom: 10px !important;
     }
+    .navbar-nav .hallactive .nav-link {
+        border-color: green;
+        border-width: 3px;
+        color: green !important;
+
+        }
+        body {
+      background-image: linear-gradient(to top left, #003366, black);
+    }
+    .searchInput1{
+      margin: 15px;
+    }
+
   </style>
+  <script>
+  $(document).ready(function() {
+    $("#searchInput1").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("table tbody tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+      });
+    });
+  });
+  </script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-    <img src="images/logo.png" alt="Logo" height="50">
-    <a class="navbar-brand" href="#">MOVIEHALLHUB</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav mx-auto middle">
-        <li class="nav-item ">
-          <a class="nav-link" href="index.php">Home</a>
-        </li>
-        <li class="nav-item hallactive">
-          <a class="nav-link " href="hall.php"><b>Hall</b></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav right">
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Signup</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+
+
+        <img src="images/logo.png" alt="Logo" height="50">
+        <a class="navbar-brand" href="#">MOVIEHALLHUB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav mx-auto middle">
+            <li class="nav-item">
+              <a class="nav-link" href="index.php"><b>Home</b></a>
+            </li>
+            <li class="nav-item hallactive">
+              <a class="nav-link" href="hall.php">Hall</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="help.html">Help</a>
+            </li>
+          </ul>
+        
+          <div class="col-md-2">
+          <ul class="navbar-nav right justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Signup</a>
+            </li>
+          </ul>
+        </div>
+      
+      </nav>
   <h1>
     <?php
         include('simple_html_dom.php');
@@ -165,6 +230,16 @@
     ?>
   </h1>
   <div class="container-fluid halltable">
+  <div class="row justify-content-center tomorrow">
+              <div class="col-md-6 justify-content-center searchInput1">
+                <div class="input-group ">
+                  <input type="text" id="searchInput1" class="form-control" placeholder="Search by any text">
+                  <div class="input-group-append">
+                    <span class="input-group-text "><i class="fas fa-search"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
     <div class="row">
       <div class="col-md-12">
 
@@ -387,17 +462,164 @@
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
-      authDomain: "moviehallhub-5be63.firebaseapp.com",
-      databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
-      projectId: "moviehallhub-5be63",
-      storageBucket: "moviehallhub-5be63.appspot.com",
-      messagingSenderId: "42968964428",
-      appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
-      measurementId: "G-MGCRF3N36T"
+    authDomain: "moviehallhub-5be63.firebaseapp.com",
+    databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+    projectId: "moviehallhub-5be63",
+    storageBucket: "moviehallhub-5be63.appspot.com",
+    messagingSenderId: "42968964428",
+    appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+    measurementId: "G-MGCRF3N36T"
     };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
+
+
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+   
+    var dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
+
+    var dropdownButton = document.createElement('button');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+    dropdownButton.setAttribute('type', 'button');
+    dropdownButton.setAttribute('id', 'dropdownMenuButton');
+    dropdownButton.setAttribute('data-toggle', 'dropdown');
+    dropdownButton.setAttribute('aria-haspopup', 'true');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+
+    var profileIcon = document.createElement('i');
+    profileIcon.classList.add('fa', 'fa-user'); // Replace with the appropriate icon class, e.g., Font Awesome
+    dropdownButton.appendChild(profileIcon);
+
+    var usernameSpan = document.createElement('span');
+    usernameSpan.classList.add('username');
+    dropdownButton.appendChild(usernameSpan);
+
+    var dropdownMenu = document.createElement('div');
+    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left'); // Added 'dropdown-menu-left' class
+    dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
+
+    var profileLink = document.createElement('a');
+    profileLink.classList.add('dropdown-item');
+    profileLink.setAttribute('href', 'profile.html'); // Link to the profile page
+    profileLink.textContent = 'Profile';
+
+    // Retrieve and display the username from the Realtime Firebase database
+    firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
+      var username = snapshot.val().username;
+      usernameSpan.textContent = ' \t ' + username; // Add a space after the username
+    });
+
+    var logoutLink = document.createElement('a');
+    logoutLink.classList.add('dropdown-item', 'logout');
+    logoutLink.setAttribute('href', '#');
+    logoutLink.textContent = 'Logout';
+
+    dropdownMenu.appendChild(profileLink);
+    dropdownMenu.appendChild(logoutLink);
+
+    dropdown.appendChild(dropdownButton);
+    dropdown.appendChild(dropdownMenu);
+
+    document.querySelector('.navbar-nav.right').innerHTML = '';
+    document.querySelector('.navbar-nav.right').appendChild(dropdown);
+
+    document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
+      var confirmLogout = confirm("Are you sure you want to log out?");
+      if (confirmLogout) {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          console.log("Signed out");
+          document.querySelector('.navbar-nav.right').innerHTML = '';
+        }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+        });
+      }
+    });
+  } else {
+    // No user is signed in.
+    console.log("no user");
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
+  }
+});
+    firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    document.getElementById("email").value=user.email
+   
+    var dropdown = document.createElement('div');
+    dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
+
+    var dropdownButton = document.createElement('button');
+    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+    dropdownButton.setAttribute('type', 'button');
+    dropdownButton.setAttribute('id', 'dropdownMenuButton');
+    dropdownButton.setAttribute('data-toggle', 'dropdown');
+    dropdownButton.setAttribute('aria-haspopup', 'true');
+    dropdownButton.setAttribute('aria-expanded', 'false');
+
+    var profileIcon = document.createElement('i');
+    profileIcon.classList.add('fa', 'fa-user'); // Replace with the appropriate icon class, e.g., Font Awesome
+    dropdownButton.appendChild(profileIcon);
+
+    var usernameSpan = document.createElement('span');
+    usernameSpan.classList.add('username');
+    dropdownButton.appendChild(usernameSpan);
+
+    var dropdownMenu = document.createElement('div');
+    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left'); // Added 'dropdown-menu-left' class
+    dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
+
+    var profileLink = document.createElement('a');
+    profileLink.classList.add('dropdown-item');
+    profileLink.setAttribute('href', 'profile.html'); // Link to the profile page
+    profileLink.textContent = 'Profile';
+
+    // Retrieve and display the username from the Realtime Firebase database
+    firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
+      var username = snapshot.val().username;
+      usernameSpan.textContent = ' \t ' + username; // Add a space after the username
+    });
+
+    var logoutLink = document.createElement('a');
+    logoutLink.classList.add('dropdown-item', 'logout');
+    logoutLink.setAttribute('href', '#');
+    logoutLink.textContent = 'Logout';
+
+    dropdownMenu.appendChild(profileLink);
+    dropdownMenu.appendChild(logoutLink);
+
+    dropdown.appendChild(dropdownButton);
+    dropdown.appendChild(dropdownMenu);
+
+    document.querySelector('.navbar-nav.right').innerHTML = '';
+    document.querySelector('.navbar-nav.right').appendChild(dropdown);
+
+    document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
+      var confirmLogout = confirm("Are you sure you want to log out?");
+      if (confirmLogout) {
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          console.log("Signed out");
+          document.querySelector('.navbar-nav.right').innerHTML = '';
+        }).catch(function(error) {
+          // An error happened.
+          console.log(error);
+        });
+      }
+    });
+  } else {
+    // No user is signed in.
+    console.log("no user");
+    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
+  }
+});
 
     function calculateTotalRating(rating) {
       var totalRating = 0;
@@ -503,6 +725,9 @@
         console.error('Error saving review rating:', error);
       });
     }
+
+
+
 
 
 
