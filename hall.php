@@ -266,7 +266,7 @@ table.table-dark tr {
                   <br><b>Location:</b> 4th Foor NLIC City Center, 33, Kamal Pokhari, Kathmandu Nepal
                   <br><b>Contact Number:</b> 01-4011643, 01-4011645, 01-211223
                   <br>
-                  <h3>Reviews</h3>
+                  <h3 style="text-align: center;"><br>Give review:</h3>
                   <div id="reviewStars1" class="text-center">
                     <i class="far fa-star fa-2x star" data-value="1"></i>
                     <i class="far fa-star fa-2x star" data-value="2"></i>
@@ -307,7 +307,7 @@ table.table-dark tr {
                   <br><b>Location:</b> KL Tower, Chabahil, Kathmandu Nepal.
                   <br><b>Contact Number:</b> 01-4468700 (For Booking as well)
                   <br>
-                  <h3>Reviews</h3>
+                  <h3 style="text-align: center;"><br>Give review</h3>
                   <div id="reviewStars2" class="text-center">
                     <i class="far fa-star fa-2x star" data-value="1"></i>
                     <i class="far fa-star fa-2x star" data-value="2"></i>
@@ -349,7 +349,7 @@ table.table-dark tr {
                   <br><b>Location:</b> 7th and 8th Floor, Civil Trade Center, Sundhara
                   <br><b>Contact Number:</b> 01-4248402 or 01-4248403
                   <br>
-                  <h3>Reviews</h3>
+                  <h3 style="text-align: center;"><br>Give review</h3>
                   <div id="reviewStars3" class="text-center">
                     <i class="far fa-star fa-2x star" data-value="1"></i>
                     <i class="far fa-star fa-2x star" data-value="2"></i>
@@ -391,7 +391,7 @@ table.table-dark tr {
                   <br><b>Location:</b> Teendhara Marg, Opposite Royal Singhi Hotel.
                   <br><b>Contact Number:</b> 01-4169201, 01-4169202 (For Advanced Booking as well)
                   <br>
-                  <h3>Reviews</h3>
+                  <h3 style="text-align: center;"><br>Give review</h3>
                   <div id="reviewStars4" class="text-center">
                     <i class="far fa-star fa-2x star" data-value="1"></i>
                     <i class="far fa-star fa-2x star" data-value="2"></i>
