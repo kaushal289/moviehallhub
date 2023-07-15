@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Edit Profile</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -9,7 +8,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <style>
   body {
     background-image: linear-gradient(to top left, #003366, black);
@@ -19,16 +17,15 @@
   }
 
   .container {
-
     max-width: 400px;
- 
     padding-top: 100px;
     color: white;
   }
-  #editProfileForm{
+  
+  #editProfileForm {
     background-color: black;
     padding: 20px;
-    box-shadow:20px 20px 20px 20px rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   }
 
   h2 {
@@ -73,166 +70,167 @@
     margin-top: 5px;
   }
 
-
-
-
-
   .navbar {
-      background-color: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
-    }
-    .navbar-brand {
-      color: #ffffff;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    .navbar-nav {
-      margin-left: auto;
-      
-    }
-    .middle{
-      text-align: center;
-    }
-    .navbar-nav .nav-link {
-      color: #ffffff !important;
-      margin: 0 10px;
-      border: 1px solid #ffffff;
-      width: 80px; /* Set a fixed width for the buttons */
-      border-radius: 30px;
-      display: inline-block;
-      text-align: center; /* Center align the text */
-      line-height: 1.5; /* Adjust line-height as needed */
-      transition: background-color 0.3s;
-      font-size:large; /* Add a smooth transition effect */
-    }
-    .navbar-nav{
-      color: black !important; /* Set the background color to green on hover */
-    }
-    .nav-link:hover {
-      color: black !important;
-      background-color: white; /* Set the background color to green on hover */
-    }
-    .navbar-toggler-icon{
-        color: #ffffff !important;
-    }
-    .right{
-      text-align: -webkit-left;
-    }
-    .navbar-nav .helpactive .nav-link {
-        border-color: green;
-        border-width: 3px;
-        color: green !important;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
+  }
 
-        }
+  .navbar-brand {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
+  .navbar-nav {
+    margin-left: auto;
+  }
 
-        .footer {
-            background-color: rgba(0, 0, 0, 0.9);
-            box-shadow:20px 20px 50px 50px rgb(0, 0, 0);
-  color: #fff;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin-top: 70px;
-}
+  .middle {
+    text-align: center;
+  }
 
-.footer h4 {
-  color: #fff;
-}
+  .navbar-nav .nav-link {
+    color: #ffffff !important;
+    margin: 0 10px;
+    border: 1px solid #ffffff;
+    width: 80px;
+    border-radius: 30px;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.5;
+    transition: background-color 0.3s;
+    font-size: large;
+  }
 
-.footer p {
-  color: #fff;
-}
+  .navbar-nav .nav-link:hover {
+    color: black !important;
+    background-color: white;
+  }
 
-.social-media {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
+  .right {
+    text-align: -webkit-left;
+  }
 
-.social-media li {
-  margin: 0 10px;
-}
+  .navbar-nav .helpactive .nav-link {
+    border-color: green;
+    border-width: 3px;
+    color: green !important;
+  }
 
-.social-media a {
-  color: #fff;
-  font-size: 20px;
-}
+  .footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 20px 20px 50px 50px rgb(0, 0, 0);
+    color: #fff;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 70px;
+  }
 
-.social-media a:hover {
-  color: #aaa;
-  transition: color 0.3s ease;
-}
+  .footer h4 {
+    color: #fff;
+  }
 
-.footer hr {
-  background-color: #fff;
-  margin: 20px 0;
-}
+  .footer p {
+    color: #fff;
+  }
 
-.footer p.text-center {
-  margin: 10;
-  font-size: 14px;
+  .social-media {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
 
-}
-.follow{
-  text-align: center;
-}
-.navbar-nav .homeactive .nav-link {
-  border-color: green;
-  border-width: 3px;
-  color: green !important;
+  .social-media li {
+    margin: 0 10px;
+  }
 
-}
-.dark-theme {
-  color: rgba(0, 0, 0, 0.5);
-  right: 0 !important;
-}
-#dropdownMenuButton{
-  background-color: black !important;
-}
+  .social-media a {
+    color: #fff;
+    font-size: 20px;
+  }
 
-.dropdown-menu {
-  background-color: black;
- 
-}
-.dropdown {
-  right:0 !important;
-  text-align: center;
-}
+  .social-media a:hover {
+    color: #aaa;
+    transition: color 0.3s ease;
+  }
 
-.dropdown-item {
-  color: #fff;
-  right: 0px !important;
-  
-}
+  .footer hr {
+    background-color: #fff;
+    margin: 20px 0;
+  }
 
-.dropdown-item:hover {
-  background-color: #555;
-}
+  .footer p.text-center {
+    margin: 10;
+    font-size: 14px;
+  }
 
-.dropdown-menu-left {
-  right: 0 !important;
-}
-.dropdown-toggle{
+  .follow {
+    text-align: center;
+  }
+
+  .navbar-nav .homeactive .nav-link {
+    border-color: green;
+    border-width: 3px;
+    color: green !important;
+  }
+
+  .dark-theme {
+    color: rgba(0, 0, 0, 0.5);
+    right: 0 !important;
+  }
+
+  #dropdownMenuButton {
+    background-color: black !important;
+  }
+
+  .dropdown-menu {
+    background-color: black;
+  }
+
+  .dropdown {
+    right: 0 !important;
+    text-align: center;
+  }
+
+  .dropdown-item {
+    color: #fff;
+    right: 0px !important;
+  }
+
+  .dropdown-item:hover {
+    background-color: #555;
+  }
+
+  .dropdown-menu-left {
+    right: 0 !important;
+  }
+
+  .dropdown-toggle {
     margin: 0px !important
-}
-.submitbtn:hover{
-        border-color: green !important;
-        background: white !important;
-        color: green !important;
-}
+  }
 
-
-
-
+  .submitbtn:hover {
+    border-color: green !important;
+    background: white !important;
+    color: green !important;
+  }
+  .popup {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #004811;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
 
 </style>
-
 <body>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-
-
-
     <img src="images/logo.png" alt="Logo" height="50">
     <a class="navbar-brand" href="#">MOVIEHALLHUB</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -251,15 +249,14 @@
           <a class="nav-link" href="help.html">Help</a>
         </li>
       </ul>
-    
       <div class="col-md-2">
-      <ul class="navbar-nav right justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Signup</a>
-        </li>
-      </ul>
+        <ul class="navbar-nav right justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Signup</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  
   </nav>
   <div class="container prof">
     <h2>Edit Profile</h2>
@@ -324,102 +321,102 @@
       <div class="row">
         <div class="col-md-12">
           <hr>
-          <p class="text-center"> &copy; 2023 MovieHallHub. All rights reserved.</p>
+          <p class="text-center">&copy; 2023 MovieHallHub. All rights reserved.</p>
         </div>
       </div>
     </div>
+    <div class="popup" id="popup">
+      <h6>Profile updated successfully!</h6>
+    </div>
   </footer>
-
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyClknweVKXCUP-dpumF8ySrvQu6TBYGHcs",
-      authDomain: "moviehallhub-5be63.firebaseapp.com",
-      databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
-      projectId: "moviehallhub-5be63",
-      storageBucket: "moviehallhub-5be63.appspot.com",
-      messagingSenderId: "42968964428",
-      appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
-      measurementId: "G-MGCRF3N36T"
+  authDomain: "moviehallhub-5be63.firebaseapp.com",
+  databaseURL: "https://moviehallhub-5be63-default-rtdb.firebaseio.com",
+  projectId: "moviehallhub-5be63",
+  storageBucket: "moviehallhub-5be63.appspot.com",
+  messagingSenderId: "42968964428",
+  appId: "1:42968964428:web:b30d3825f1a50fd6dbc3e9",
+  measurementId: "G-MGCRF3N36T"
     };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
 
     firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    // User is signed in.
-   
-    var dropdown = document.createElement('div');
-    dropdown.classList.add('dropdown', 'dark-theme'); // Added 'dark-theme' class
+      if (user) {
+        // User is signed in.
+        var dropdown = document.createElement('div');
+        dropdown.classList.add('dropdown', 'dark-theme');
 
-    var dropdownButton = document.createElement('button');
-    dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
-    dropdownButton.setAttribute('type', 'button');
-    dropdownButton.setAttribute('id', 'dropdownMenuButton');
-    dropdownButton.setAttribute('data-toggle', 'dropdown');
-    dropdownButton.setAttribute('aria-haspopup', 'true');
-    dropdownButton.setAttribute('aria-expanded', 'false');
+        var dropdownButton = document.createElement('button');
+        dropdownButton.classList.add('btn', 'btn-secondary', 'dropdown-toggle');
+        dropdownButton.setAttribute('type', 'button');
+        dropdownButton.setAttribute('id', 'dropdownMenuButton');
+        dropdownButton.setAttribute('data-toggle', 'dropdown');
+        dropdownButton.setAttribute('aria-haspopup', 'true');
+        dropdownButton.setAttribute('aria-expanded', 'false');
 
-    var profileIcon = document.createElement('i');
-    profileIcon.classList.add('fa', 'fa-user'); // Replace with the appropriate icon class, e.g., Font Awesome
-    dropdownButton.appendChild(profileIcon);
+        var profileIcon = document.createElement('i');
+        profileIcon.classList.add('fa', 'fa-user');
+        dropdownButton.appendChild(profileIcon);
 
-    var usernameSpan = document.createElement('span');
-    usernameSpan.classList.add('username');
-    dropdownButton.appendChild(usernameSpan);
+        var usernameSpan = document.createElement('span');
+        usernameSpan.classList.add('username');
+        dropdownButton.appendChild(usernameSpan);
 
-    var dropdownMenu = document.createElement('div');
-    dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left'); // Added 'dropdown-menu-left' class
-    dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
+        var dropdownMenu = document.createElement('div');
+        dropdownMenu.classList.add('dropdown-menu', 'dropdown-menu-left');
+        dropdownMenu.setAttribute('aria-labelledby', 'dropdownMenuButton');
 
-    var profileLink = document.createElement('a');
-    profileLink.classList.add('dropdown-item');
-    profileLink.setAttribute('href', 'profile.html'); // Link to the profile page
-    profileLink.textContent = 'Profile';
+        var profileLink = document.createElement('a');
+        profileLink.classList.add('dropdown-item');
+        profileLink.setAttribute('href', 'profile.html');
+        profileLink.textContent = 'Profile';
 
-    // Retrieve and display the username from the Realtime Firebase database
-    firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
-      var username = snapshot.val().username;
-      usernameSpan.textContent = ' \t ' + username; // Add a space after the username
-    });
-
-    var logoutLink = document.createElement('a');
-    logoutLink.classList.add('dropdown-item', 'logout');
-    logoutLink.setAttribute('href', '#');
-    logoutLink.textContent = 'Logout';
-
-    dropdownMenu.appendChild(profileLink);
-    dropdownMenu.appendChild(logoutLink);
-
-    dropdown.appendChild(dropdownButton);
-    dropdown.appendChild(dropdownMenu);
-
-    document.querySelector('.navbar-nav.right').innerHTML = '';
-    document.querySelector('.navbar-nav.right').appendChild(dropdown);
-
-    document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
-      var confirmLogout = confirm("Are you sure you want to log out?");
-      if (confirmLogout) {
-        firebase.auth().signOut().then(function() {
-          // Sign-out successful.
-          console.log("Signed out");
-          document.querySelector('.navbar-nav.right').innerHTML = '';
-        }).catch(function(error) {
-          // An error happened.
-          console.log(error);
+        // Retrieve and display the username from the Realtime Firebase database
+        firebase.database().ref('users/' + user.uid).once('value').then(function(snapshot) {
+          var username = snapshot.val().username;
+          usernameSpan.textContent = ' \t ' + username;
         });
+
+        var logoutLink = document.createElement('a');
+        logoutLink.classList.add('dropdown-item', 'logout');
+        logoutLink.setAttribute('href', '#');
+        logoutLink.textContent = 'Logout';
+
+        dropdownMenu.appendChild(profileLink);
+        dropdownMenu.appendChild(logoutLink);
+
+        dropdown.appendChild(dropdownButton);
+        dropdown.appendChild(dropdownMenu);
+
+        document.querySelector('.navbar-nav.right').innerHTML = '';
+        document.querySelector('.navbar-nav.right').appendChild(dropdown);
+
+        document.querySelector('.navbar-nav.right .dropdown-menu .logout').addEventListener('click', function() {
+          var confirmLogout = confirm("Are you sure you want to log out?");
+          if (confirmLogout) {
+            firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+              console.log("Signed out");
+              document.querySelector('.navbar-nav.right').innerHTML = '';
+            }).catch(function(error) {
+              // An error happened.
+              console.log(error);
+            });
+          }
+        });
+      } else {
+        // No user is signed in.
+        console.log("no user");
+        document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
       }
     });
-  } else {
-    // No user is signed in.
-    console.log("no user");
-    document.querySelector('.navbar-nav.right').innerHTML = '<li class="nav-item"><a class="nav-link" href="login.html">Signup</a></li>';
-  }
-});
 
     // Reference to the user's profile in the Firebase database
     var userRef;
@@ -447,61 +444,51 @@
       }
     });
 
-    // Reference to the edit profile form
     var form = document.getElementById('editProfileForm');
-
-    // Submit event listener for the edit profile form
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); // Prevent form submission
-
-      // Reset error messages
-      document.getElementById('usernameError').innerHTML = "";
-      document.getElementById('locationError').innerHTML = "";
-      document.getElementById('contactError').innerHTML = "";
-      document.getElementById('newPasswordError').innerHTML = "";
-      document.getElementById('confirmPasswordError').innerHTML = "";
-
-      // Get user input values
-      var username = document.getElementById('username').value;
-      var location = document.getElementById('location').value;
-      var contact = document.getElementById('contact').value;
-      var newPassword = document.getElementById('newPassword').value;
-      var confirmPassword = document.getElementById('confirmPassword').value;
-
-      // Validation checks
-      if (newPassword !== confirmPassword) {
-        document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match.";
-        return;
-      }
-
-      // Update the user's profile data in the database
-      userRef.update({
-        username: username,
-        location: location,
-        contact: contact,
-      }).then(function() {
-        var user = firebase.auth().currentUser;
-        // Change the user's password if a new password is provided
-        if (newPassword) {
-          user.updatePassword(newPassword).then(function() {
-            alert('Profile and password updated successfully!');
-            // Redirect to profile page after successful update
-            window.location.href = 'profile.html';
-          }).catch(function(error) {
-            console.error('Error updating password:', error);
-            document.getElementById('newPasswordError').innerHTML = error.message;
-          });
-        } else {
-          alert('Profile updated successfully!');
-          // Redirect to profile page after successful update
-          window.location.href = 'profile.html';
-        }
-      }).catch(function(error) {
-        // Handle database error
-        console.error('Error updating user profile:', error);
-      });
-    });
-
+	    form.addEventListener('submit', function(e) {
+	      e.preventDefault(); // Prevent form submission
+	      document.getElementById('usernameError').innerHTML = "";
+	      document.getElementById('locationError').innerHTML = "";
+	      document.getElementById('contactError').innerHTML = "";
+	      document.getElementById('newPasswordError').innerHTML = "";
+	      document.getElementById('confirmPasswordError').innerHTML = "";
+	      var username = document.getElementById('username').value;
+	      var location = document.getElementById('location').value;
+	      var contact = document.getElementById('contact').value;
+	      var newPassword = document.getElementById('newPassword').value;
+	      var confirmPassword = document.getElementById('confirmPassword').value;
+	      if (newPassword !== confirmPassword) {
+	        document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match.";
+	        return;
+	      }
+	      userRef.update({
+	        username: username,
+	        location: location,
+	        contact: contact,
+	      }).then(function() {
+	        var user = firebase.auth().currentUser;        if (newPassword) {
+	          user.updatePassword(newPassword).then(function() {
+	            var popup = document.getElementById("popup");
+				popup.style.display = "block";
+				setTimeout(function() {
+					popup.style.display = "none";
+				}, 3000);
+	          }).catch(function(error) {
+	            console.error('Error updating password:', error);
+	            document.getElementById('newPasswordError').innerHTML = error.message;
+	          });
+	        } else {
+	        	var popup = document.getElementById("popup");
+				popup.style.display = "block";
+				setTimeout(function() {
+					popup.style.display = "none";
+				}, 3000);
+	        }
+	      }).catch(function(error) {
+	        // Handle database error
+	        console.error('Error updating user profile:', error);
+	      });
+	    });
     // Cancel button click event listener
     var cancelButton = document.getElementById('cancelButton');
     cancelButton.addEventListener('click', function() {
@@ -511,5 +498,4 @@
 
   </script>
 </body>
-
 </html>

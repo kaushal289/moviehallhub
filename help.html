@@ -204,6 +204,56 @@
 .dropdown-toggle{
     margin: 0px !important
 }
+.popup1 {
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: red;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
+    .popup{
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: green;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
+
+    .popup{
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: green;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
+		.popup h6{
+			margin-top: 0px;
+			margin-bottom: 10px;
+		}
+		.popup button{
+			background-color: white;
+			color: green;
+			padding: 5px 10px;
+			border-radius: 5px;
+			border: none;
+			margin-right: 10px;
+			cursor: pointer;
+		}
 
 
   </style>
@@ -259,9 +309,7 @@
                 <div class="contact-wrap w-100 p-md-5 p-4">
                   <h3 class="mb-4 topic">Get in touch</h3>
                   <div id="form-message-warning" class="mb-4"></div>
-                  <div id="form-message-success" class="mb-4">
-                    Your message was sent, thank you!
-                  </div>
+                  
                   <form method="POST" id="contactForm" name="contactForm">
                     <div class="row">
                       <div class="col-md-6">
@@ -338,6 +386,12 @@
       </div>
     </div>
   </section>
+  <div class="popup1" id="popup1">
+    <h6>Please login to send message</h6>
+  </div>
+  <div class="popup" id="popup">
+    <h6>Your message was sent successfully</h6>
+  </div>
   <footer class="footer">
     <div class="container-fluid">
       <div class="col-md-12 row">
@@ -471,7 +525,11 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
   var user = firebase.auth().currentUser;
   if (!user) {
-    alert('Please login to submit the form');
+    var popup1 = document.getElementById("popup1");
+          popup1.style.display = "block";
+          setTimeout(function() {
+            popup1.style.display = "none";
+          }, 3000);
     return;
   }
 
@@ -508,9 +566,12 @@ document.getElementById('contactForm').addEventListener('submit', function(event
   // Push the form data to the Firebase Database
   firebase.database().ref('contact-messages').push(formData)
     .then(function() {
-      // Display success message
-      document.getElementById('form-message-warning').style.display = 'none';
-      document.getElementById('form-message-success').style.display = 'block';
+      var popup = document.getElementById("popup");
+          popup.style.display = "block";
+          setTimeout(function() {
+            popup.style.display = "none";
+          }, 3000);
+
 
       // Reset the form fields
       document.getElementById('name').value = '';
@@ -519,8 +580,11 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     })
     .catch(function(error) {
       // Display error message
-      document.getElementById('form-message-success').style.display = 'none';
-      document.getElementById('form-message-warning').style.display = 'block';
+      var popup = document.getElementById("popup");
+          popup.style.display = "block";
+          setTimeout(function() {
+            popup.style.display = "none";
+          }, 3000);
       document.getElementById('form-message-warning').textContent = 'Failed to submit the form. Please try again later.';
       console.error(error);
     });

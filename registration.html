@@ -183,6 +183,18 @@
   color: green !important;
 
 }
+.popup {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: #004811;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
 </style>
 
 <body>
@@ -257,6 +269,9 @@
       </div>
     </form>
   </div>
+  <div class="popup" id="popup">
+    <h6>User registered successfully</h6>
+  </div>
   <footer class="footer">
     <div class="container-fluid">
       <div class="col-md-12 row">
@@ -289,6 +304,7 @@
       </div>
     </div>
   </footer>
+
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
@@ -345,6 +361,14 @@
         document.getElementById('confirmPasswordError').innerHTML = "Passwords do not match.";
         return;
       }
+      if (!isValidContact(contact)) {
+        document.getElementById('contactError').innerHTML = "Please enter a valid 10-digit mobile contact number.";
+        return;
+      }
+      if (!isValidUsername(username)) {
+        document.getElementById('usernameError').innerHTML = "Please enter a valid username without numbers or symbols.";
+        return;
+      }
 
       // Create a new user with email and password
       firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -359,8 +383,16 @@
             contact: contact,
             email: email
           }).then(function () {
-            // Redirect to login page after successful registration
-            window.location.href = 'login.html';
+            var popup = document.getElementById("popup");
+      popup.style.display = "block";
+
+      setTimeout(function() {
+        popup.style.display = "none";
+        // Redirect to login page
+        window.location.href = 'login.html';
+      }, 3000);
+        
+         
           }).catch(function (error) {
             // Handle database error
             console.error('Error saving user information:', error);
@@ -384,7 +416,15 @@
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
     }
-    
+    function isValidContact(contact) {
+      var contactRegex = /^\d{10}$/;
+      return contactRegex.test(contact);
+    }
+  
+      function isValidUsername(username) {
+      var usernameRegex = /^[a-zA-Z\s]+$/;
+      return usernameRegex.test(username);
+    }
     // Login button click event listener
     var loginButton = document.getElementById('loginButton');
     loginButton.addEventListener('click', function () {

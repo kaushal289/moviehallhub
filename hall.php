@@ -177,6 +177,31 @@ table.table-dark tr {
       margin: 15px;
     }
 
+    .popup {
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: red;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
+    .popup1 {
+			position: fixed;
+			top: 20%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: green;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			display: none;
+      color: white;
+		}
+
   </style>
   <script>
   $(document).ready(function() {
@@ -422,6 +447,13 @@ table.table-dark tr {
       </div>
     </div>
   </div>
+  <div class="popup" id="popup">
+    <h6>Please login to give review</h6>
+  </div>
+  <div class="popup1" id="popup1">
+    <h6>Thank you for your review</h6>
+  </div>
+
   <footer class="footer">
     <div class="container-fluid">
       <div class="col-md-12 row">
@@ -713,17 +745,35 @@ table.table-dark tr {
       });
     }
 
-    // Save the rating in the database
     function saveRating(id, rating) {
-      var userRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid);
-      userRef.update({
-        [id]: rating
-      }).then(function () {
-        console.log('Review rating saved successfully!');
-        alert('Review rating saved successfully!');
-      }).catch(function (error) {
-        console.error('Error saving review rating:', error);
-      });
+      var user = firebase.auth().currentUser;
+      if (user) {
+        var userRef = firebase.database().ref('users/' + user.uid);
+        userRef.update({
+          [id]: rating
+        }).then(function () {
+         
+          var popup1 = document.getElementById("popup1");
+          popup1.style.display = "block";
+          setTimeout(function() {
+            popup1.style.display = "none";
+          }, 3000);
+          
+        }).catch(function (error) {
+          console.error('Error saving review rating:', error);
+          var popup = document.getElementById("popup");
+          popup.style.display = "block";
+          setTimeout(function() {
+            popup.style.display = "none";
+          }, 3000);
+        });
+      } else {
+        var popup = document.getElementById("popup");
+        popup.style.display = "block";
+        setTimeout(function() {
+          popup.style.display = "none";
+        }, 3000);
+      }
     }
 
 
